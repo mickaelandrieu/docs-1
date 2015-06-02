@@ -9,6 +9,6 @@ theme: 'bootstrap'
 
 pages:
 - ['index.md', 'Summary']
-- ['introduction.md', 'User documentation', 'Introduction']
+- ['introduction.md', 'Introduction', 'Introduction']
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
