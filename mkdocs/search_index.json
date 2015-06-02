@@ -2,23 +2,43 @@
     "docs": [
         {
             "location": "/", 
-            "text": "", 
-            "title": "Summary"
-        }, 
-        {
-            "location": "/introduction/", 
-            "text": "Introduction\n\n\nWhat is BackBee ?\n\n\nBackBee is an open-source content management system. Because it incorporates HTML5 programming to an unprecedented extent, its usability and design flexibility surpasses all other content management systems that we know of.\n\n\nAll changes in content \u2013 adding, deleting or changing text, images or new page elements \u2013 can be made directly on the page. Just click and type, or drag and drop. No back office. No shuttling back and forth between the back end and a \u201cpreview\u201d page that often fails to match the final page display.\n\n\nBackBee offers what we like to call WYSIWYRG, What You See Is What You Really Get. And because it automatically saves different page versions, there\u2019s no fear of losing changes along the way. If only everything in life could be this easy and secure.", 
+            "text": "Introduction\n\n\nWhat is BackBee ?\n\n\nBackBee is an open-source content management system. Because it incorporates HTML5 programming to an unprecedented extent, its usability and design flexibility surpasses all other content management systems that we know of.\n\n\nAll changes in content \u2013 adding, deleting or changing text, images or new page elements \u2013 can be made directly on the page. Just click and type, or drag and drop. No back office. No shuttling back and forth between the back end and a \u201cpreview\u201d page that often fails to match the final page display.\n\n\nBackBee offers what we like to call WYSIWYRG, What You See Is What You Really Get. And because it automatically saves different page versions, there\u2019s no fear of losing changes along the way. If only everything in life could be this easy and secure.\n\n\nKey concepts\n\n\nThe big picture", 
             "title": "Introduction"
         }, 
         {
-            "location": "/introduction/#introduction", 
+            "location": "/#introduction", 
             "text": "", 
             "title": "Introduction"
         }, 
         {
-            "location": "/introduction/#what-is-backbee", 
+            "location": "/#what-is-backbee", 
             "text": "BackBee is an open-source content management system. Because it incorporates HTML5 programming to an unprecedented extent, its usability and design flexibility surpasses all other content management systems that we know of.  All changes in content \u2013 adding, deleting or changing text, images or new page elements \u2013 can be made directly on the page. Just click and type, or drag and drop. No back office. No shuttling back and forth between the back end and a \u201cpreview\u201d page that often fails to match the final page display.  BackBee offers what we like to call WYSIWYRG, What You See Is What You Really Get. And because it automatically saves different page versions, there\u2019s no fear of losing changes along the way. If only everything in life could be this easy and secure.", 
             "title": "What is BackBee ?"
+        }, 
+        {
+            "location": "/#key-concepts", 
+            "text": "", 
+            "title": "Key concepts"
+        }, 
+        {
+            "location": "/#the-big-picture", 
+            "text": "", 
+            "title": "The big picture"
+        }, 
+        {
+            "location": "/user-documentation/installation/", 
+            "text": "User documentation\n\n\nInstallation of BackBee", 
+            "title": "Installation of BackBee CMS"
+        }, 
+        {
+            "location": "/user-documentation/installation/#user-documentation", 
+            "text": "", 
+            "title": "User documentation"
+        }, 
+        {
+            "location": "/user-documentation/installation/#installation-of-backbee", 
+            "text": "", 
+            "title": "Installation of BackBee"
         }
     ]
 }
