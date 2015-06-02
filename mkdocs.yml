@@ -1,4 +1,4 @@
-site_name: BackBee documentation
+site_name: The BackBee documentation
 site_url: http://www.backbee.com/
 site_description: The BackBee documentation
 
@@ -8,7 +8,8 @@ docs_dir: doc
 theme: 'bootstrap'
 
 pages:
-- ['index.md', 'Summary']
-- ['introduction.md', 'Introduction', 'Introduction']
+- Introduction: 'index.md'
+- User documentation:
+    - 'Installation of BackBee CMS': 'user-documentation/installation.md'
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.

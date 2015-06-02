@@ -1,0 +1,3 @@
+# User documentation
+
+## Plugins mode
