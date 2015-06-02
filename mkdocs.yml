@@ -13,6 +13,9 @@ pages:
     - Introduction: 'index.md'
     - User documentation:
         - 'Installation of BackBee CMS': 'user-documentation/installation.md'
+    - Developper documentation:
+        - 'Requirements': 'developper-documentation/requirements.md'
+        - 'Architecture': 'developper-documentation/architecture.md'
     - CookBooks:
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
 
