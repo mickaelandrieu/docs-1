@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.backbee.com/user-documentation/installation/">
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/requirements/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Installation of BackBee CMS - The BackBee documentation</title>
+	<title>Requirements - The BackBee documentation</title>
 
         <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -56,12 +56,12 @@
             
             
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">User documentation <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
-                        <li class="active">
-                            <a href="./">Installation of BackBee CMS</a>
+                        <li >
+                            <a href="../../user-documentation/installation/">Installation of BackBee CMS</a>
                         </li>
                     
                     </ul>
@@ -69,16 +69,16 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
-                        <li >
-                            <a href="../../developper-documentation/requirements/">Requirements</a>
+                        <li class="active">
+                            <a href="./">Requirements</a>
                         </li>
                     
                         <li >
-                            <a href="../../developper-documentation/architecture/">Architecture</a>
+                            <a href="../architecture/">Architecture</a>
                         </li>
                     
                     </ul>
@@ -91,11 +91,11 @@
                     <ul class="dropdown-menu">
                     
                         <li >
-                            <a href="../../developper-documentation/cookbooks/create_new_commands/">Create new commands</a>
+                            <a href="../cookbooks/create_new_commands/">Create new commands</a>
                         </li>
                     
                         <li >
-                            <a href="../../developper-documentation/cookbooks/customize_error_pages/">Customize error pages</a>
+                            <a href="../cookbooks/customize_error_pages/">Customize error pages</a>
                         </li>
                     
                     </ul>
@@ -107,12 +107,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../..">
+                    <a rel="next" href="../../user-documentation/installation/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../developper-documentation/requirements/">
+                    <a rel="prev" href="../architecture/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -135,17 +135,51 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#user-documentation">User documentation</a></li>
+        <li class="main active"><a href="#developper-documentation">Developper documentation</a></li>
         
-            <li><a href="#installation-of-backbee">Installation of BackBee</a></li>
+            <li><a href="#requirements-for-running-backbee-cms">Requirements for running BackBee CMS</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="user-documentation">User documentation</h1>
-<h2 id="installation-of-backbee">Installation of BackBee</h2></div>
+<h1 id="developper-documentation">Developper documentation</h1>
+<h2 id="requirements-for-running-backbee-cms">Requirements for running BackBee CMS</h2>
+<p>To run BackBee CMS, your system needs to adhere to a list of requirements.</p>
+<p>Below is the list of required and optional requirements.</p>
+<h3 id="required">Required</h3>
+<p>Because BackBee CMS is built on top of Symfony components, theses requirements are required.</p>
+<ul>
+<li><code>JSON</code> needs to be enabled</li>
+<li><code>ctype</code> needs to be enabled</li>
+<li><code>mbstring</code> needs to be enabled</li>
+<li>Your php configuration needs to have the date.timezone setting completed</li>
+</ul>
+<p>More, PHP needs to be a minimum version of <strong>PHP 5.4.0</strong>.</p>
+<h3 id="optional">Optional</h3>
+<ul>
+<li>You (may) need to have the PHP-XML module installed</li>
+<li>You (may) need to have at least version 2.6.21 of libxml</li>
+<li>You (may) need to have PHP tokenizer module enabled</li>
+<li>You (may) need to have iconv module enabled</li>
+<li>You (may) need to have POSIX enabled (only on *nix)</li>
+<li>You (may) need to have Intl installed with ICU 4+</li>
+<li>You (may) need to have APC 3.0.17+ installed (or another opcode cache needs to be installed)</li>
+<li>php configuration recommended settings:</li>
+</ul>
+<pre><code>short_open_tag = Off
+
+magic_quotes_gpc = Off
+
+register_globals = Off
+
+session.auto_start = Off
+</code></pre>
+
+<h3 id="doctrine2-database-management">Doctrine2 (Database management)</h3>
+<p>Because we depend on Doctrine 2, you will need to have PDO installed. Additionally, you need to have the PDO driver installed for the database server you want to use.
+Also, you need <code>php5-sqlite</code> extension to be installed and enabled during the installation process.</p></div>
         </div>
 
 	<footer class="col-md-12">

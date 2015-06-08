@@ -4,7 +4,7 @@
     
     <url>
      <loc>http://www.backbee.com//</loc>
-     <lastmod>2015-06-02</lastmod>
+     <lastmod>2015-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,7 +13,39 @@
         
     <url>
      <loc>http://www.backbee.com//user-documentation/installation/</loc>
-     <lastmod>2015-06-02</lastmod>
+     <lastmod>2015-06-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://www.backbee.com//developper-documentation/requirements/</loc>
+     <lastmod>2015-06-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.backbee.com//developper-documentation/architecture/</loc>
+     <lastmod>2015-06-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://www.backbee.com//developper-documentation/cookbooks/create_new_commands/</loc>
+     <lastmod>2015-06-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.backbee.com//developper-documentation/cookbooks/customize_error_pages/</loc>
+     <lastmod>2015-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
