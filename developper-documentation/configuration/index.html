@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.backbee.com/developper-documentation/architecture/">
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/configuration/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Architecture - The BackBee documentation</title>
+	<title>Configuration - The BackBee documentation</title>
 
         <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -68,12 +68,12 @@
                             <a href="../installation/">Installation</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Architecture</a>
+                        <li >
+                            <a href="../architecture/">Architecture</a>
                         </li>
                     
-                        <li >
-                            <a href="../configuration/">Configuration</a>
+                        <li class="active">
+                            <a href="./">Configuration</a>
                         </li>
                     
                     </ul>
@@ -102,12 +102,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../installation/">
+                    <a rel="next" href="../architecture/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../configuration/">
+                    <a rel="prev" href="../cookbooks/create_new_commands/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -132,7 +132,7 @@
     
         <li class="main active"><a href="#developper-documentation">Developper documentation</a></li>
         
-            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#configuration">Configuration</a></li>
         
     
     </ul>
@@ -140,34 +140,86 @@
             <div class="col-md-9" role="main">
 
 <h1 id="developper-documentation">Developper documentation</h1>
-<h2 id="architecture">Architecture</h2>
-<p>BackBee CMS relies on many Symfony components and on Doctrine 2.</p>
-<p>There is the list of components currently used by BackBee CMS:</p>
+<h2 id="configuration">Configuration</h2>
+<p>BackBee CMS is powerful but highly configurable.
+In this section, all the available configuration is broken down by the key (e.g. doctrine) that defines each possible section of your application configuration.</p>
+<h3 id="bootstrap-configuration-bootstrapyml">Bootstrap configuration (bootstrap.yml)</h3>
+<p>This configuration file have only two responsabilities:</p>
 <ul>
-<li>Config   </li>
-<li>Console   </li>
-<li>Debug   </li>
-<li>DependencyInjection   </li>
-<li>EventDispatcher</li>
-<li>Expression Language</li>
-<li>Filesystem</li>
-<li>HttpFoundation</li>
-<li>HttpKernel</li>
-<li>Routing</li>
-<li>Security ACL</li>
-<li>Security Core</li>
-<li>Security HTTP</li>
-<li>Serializer</li>
-<li>Translation</li>
-<li>Validator</li>
-<li>Yaml</li>
-<li>(Twig)</li>
+<li><code>debug</code>: set the developper mode: if <strong>true</strong>, the container is generated at each request.</li>
+<li><code>container</code>: set the container configuration which have 2 parameters<ul>
+<li><code>dump_directory</code>: set the location of the generated container.</li>
+<li><code>autogenerate</code>: if true, the container is generated at each request.</li>
 </ul>
-<p>BackBee CMS depends on a PHP application (the BackBee "Core") which provide a REST API to manage all the contents,
-the users, the media and the security and to a REST Javascript client which provide to the final users a toolbar
-to ease the management of the contents.</p>
-<p>To understand how BackBee CMS is built, take a look on this schema:</p>
-<p><img alt="The BackBee architecture" src="http://i.imgur.com/XfRFyLE.png" /></p></div>
+</li>
+</ul>
+<p>The <code>autogenerate</code> option is useful when you want to force the generation of the container in "production": don't forget this option have a performance cost.</p>
+<h3 id="bundles-configuration-bundlesyml">Bundles configuration (bundles.yml)</h3>
+<p>To activate a bundle, you need to register it in this file:</p>
+<pre><code class="yaml"># /repository/Config/bundles.yml
+demo: BackBee\Bundle\DemoBundle\Demo
+toolbar: BackBee\Bundle\ToolbarBundle\Toolbar
+
+</code></pre>
+
+<h3 id="database-configuration-doctrineyml">Database configuration (doctrine.yml)</h3>
+<p>We provide a demo sample configuration, you can see all available parameters into the related <a href="http://symfony.com/doc/current/reference/configuration/doctrine.html">Doctrine configuration of Symfony</a>:</p>
+<pre><code class="yaml"># /repository/Config/doctrine.yml
+dbal:
+    driver: pdo_mysql # [mysql|pgsql|sqlite]
+    host: localhost
+    port: 3306
+    dbname: backbee
+    user: root
+    password: password
+    charset: utf8
+    collation: utf8_general_ci
+    defaultTableOptions: { collate: utf8_general_ci, engine: InnoDB, charset: utf8 }
+orm:
+    auto_mapping: true
+    metadata_cache_driver: apc
+    query_cache_driver:
+        type: service
+        id: my_doctrine_common_cache_service # must be a service or a FQCN
+    result_cache_driver:
+        type: memcache
+        host: localhost
+        port: 11211
+        instance_class: Memcache
+
+</code></pre>
+
+<h3 id="seo-configuration-metadatayml">SEO Configuration (metadata.yml)</h3>
+<p>This is where you set the HTML meta headers you want to configure for each page of BackBee:</p>
+<pre><code class="yaml"># /repository/Config/metadata.yml
+keywords:
+    name: 'keywords'
+    content:
+        default: 'cms, content manager'
+description:
+    name: 'description'
+    content:
+        default: &quot;backbee demo website&quot;
+    lang: 'en'
+robots:
+    name: 'robots'
+    content:
+        default: ''
+        select: ['', 'noindex', 'nofollow', 'noindex, nofollow']
+
+</code></pre>
+
+<p>This configuration have a real impact in the toolbar, see the generated SEO form in Page context mode:</p>
+<p><img alt="SEO form option of BackBee page" src="http://i.imgur.com/hpUmrob.png" /></p>
+<h3 id="security-configuration-securityyml">Security Configuration (security.yml)</h3>
+<p>You can configure firewalls and suoders inside this file, a sudoer is a super administrator:</p>
+<pre><code class="yaml"># /repository/Config/security.yml
+firewalls:
+    firewall_name: { pattern: ^/, anonymous: null }
+sudoers:
+    username: userId
+
+</code></pre></div>
         </div>
 
 	<footer class="col-md-12">
