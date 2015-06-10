@@ -11,11 +11,11 @@ theme: 'bootstrap'
 
 pages:
     - Introduction: 'index.md'
-    - User documentation:
-        - 'Installation of BackBee CMS': 'user-documentation/installation.md'
     - Developper documentation:
         - 'Requirements': 'developper-documentation/requirements.md'
+        - 'Installation': 'developper-documentation/installation.md'
         - 'Architecture': 'developper-documentation/architecture.md'
+        - 'Configuration': 'developper-documentation/configuration.md'
     - 'Cookbooks':
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
