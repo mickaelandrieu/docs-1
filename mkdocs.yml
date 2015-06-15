@@ -19,5 +19,7 @@ pages:
     - 'Cookbooks':
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
+    - 'Components':
+        - 'Config': 'developper-documentation/components/config.md'
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
