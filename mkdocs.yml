@@ -23,5 +23,6 @@ pages:
         - 'Config': 'developper-documentation/components/config.md'
         - 'Event Listener': 'developper-documentation/components/event_listener.md'
         - 'Security': 'developper-documentation/components/security.md'
+        - 'ClassContent': 'developper-documentation/components/classcontent.md' 
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
