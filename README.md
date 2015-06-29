@@ -33,6 +33,7 @@ pages:
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
         - 'Use Swift Mailer in BackBee': 'developper-documentation/cookbooks/use_swift_mailer_in_backbee.md'
+        - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
 ```
 
 **Mkdocs** can manage only 1 level of subpage, this configuration:
