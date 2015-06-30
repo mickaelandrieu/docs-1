@@ -4,7 +4,7 @@
 
 This component is used in BackBee to set parameters from YAML files into the Container.
 
-### How the Config component work ?
+## How the Config component work ?
 
 The BackBee Config Component provide a ``Config`` object able to:
 
@@ -39,7 +39,7 @@ class Config implements DispatchTagEventInterface, DumpableServiceInterface
 
 *This component is not related and not compatible with Symfony Config component.*
 
-### YAML parsing, filtering and extending
+## YAML parsing, filtering and extending
 
 The BackBee Config Component can take a valid directory as argument, and merge the configuration according to the data set
 in this YAML files. If you don't know YAML, you can take a look to the [Symfony YAML format documentation](http://symfony.com/doc/current/components/yaml/yaml_format.html).
@@ -129,7 +129,7 @@ class Foo
 ?>
 ```
 
-### Configuration persisting
+## Configuration persisting
 
 The BackBee Config Component can persist configurations in file or in database, you can also create your owns "persistors"
 thanks to the ``BackBee\Config\PersistorInterface``.
@@ -152,7 +152,7 @@ config:
 * ``persistor`` is the list of activated persistor, BackBee will loop on each and try to find configuration. If no one
   provide the requested configuration, an exception will be throw.
 
-### Configuration caching
+## Configuration caching
 
 The BackBee Config Component is fully compatible with BackBee Cache component.
 

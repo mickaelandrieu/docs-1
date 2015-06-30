@@ -10,8 +10,8 @@ extra_javascript: ['js/backbee.js']
 theme: 'bootstrap'
 
 pages:
-    - Introduction: 'index.md'
-    - Developper documentation:
+    - 'Introduction': 'index.md'
+    - 'Developper documentation':
         - 'Requirements': 'developper-documentation/requirements.md'
         - 'Installation': 'developper-documentation/installation.md'
         - 'Architecture': 'developper-documentation/architecture.md'
@@ -21,5 +21,7 @@ pages:
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
     - 'Components':
         - 'Config': 'developper-documentation/components/config.md'
+        - 'Event Listener': 'developper-documentation/components/event_listener.md'
+        - 'Security': 'developper-documentation/components/security.md'
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
