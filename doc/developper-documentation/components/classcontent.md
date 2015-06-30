@@ -1,12 +1,15 @@
-# ClassContent
+# Components
 
-## Parameters
+## The ClassContent component
+
+
+## ClassContent Parameters
 
 Parameters allow to configure your content easily, he is used usually in the listener but can be used everywhere. Parameters is contributed on front by the user with the gearing button of block.
 
 Parameters is builded from the block's YAML like
 
-```
+```yaml
 BlockDemo:
     properties:
         name: Block demo
@@ -32,100 +35,106 @@ BlockDemo:
 
 ### Use parameters
 
-If parameters is not validated by user the content parameters is overrided by revision parameters. 
+If parameters is not validated by user the content parameters is overrided by revision parameters.
 **Only value of the parameter is saved.**
 
 For get default parameters:
-``` PHP
+```php
+<?php
 $params = $content->getDefaultParams();
 
-# That return all parameters with definitions and default values
-array (size=2)
-  'mytext' => 
-    array (size=3)
-      'label' => string 'My text' (length=7)
-      'type' => string 'text' (length=4)
-      'value' => string '' (length=0)
-  'myselect' => 
-    array (size=4)
-      'label' => string 'My select' (length=9)
-      'type' => string 'select' (length=6)
-      'options' => 
-        array (size=2)
-          'foo' => string 'Foo' (length=3)
-          'bar' => string 'Bar' (length=3)string 'yolo' (length=4)
-      'value' => 
-        array (size=1)
-          0 => string 'foo' (length=3)
+/** That return all parameters with definitions and default values:
+ *  array (size=2)
+ *    'mytext' =>
+ *      array (size=3)
+ *        'label' => string 'My text' (length=7)
+ *        'type' => string 'text' (length=4)
+ *        'value' => string '' (length=0)
+ *    'myselect' =>
+ *      array (size=4)
+ *        'label' => string 'My select' (length=9)
+ *        'type' => string 'select' (length=6)
+ *        'options' =>
+ *          array (size=2)
+ *            'foo' => string 'Foo' (length=3)
+ *            'bar' => string 'Bar' (length=3)string 'yolo' (length=4)
+ *        'value' =>
+ *          array (size=1)
+ *            0 => string 'foo' (length=3)
+ */
 ```
 
 For get all parameters :
-``` PHP
+```php
+<?php
+
 $params = $content->getAllParams();
 
-# That return all parameters with definitions and new values
-array (size=2)
-  'mytext' => 
-    array (size=3)
-      'label' => string 'My text' (length=7)
-      'type' => string 'text' (length=4)
-      'value' => string '' (length=0)
-  'myselect' => 
-    array (size=4)
-      'label' => string 'My select' (length=9)
-      'type' => string 'select' (length=6)
-      'options' => 
-        array (size=2)
-          'foo' => string 'Foo' (length=3)
-          'bar' => string 'Bar' (length=3)
-      'value' => 
-        array (size=1)
-          0 => string 'foo' (length=3)
+/** That return all parameters with definitions and new values
+ *  array (size=2)
+ *    'mytext' =>
+ *      array (size=3)
+ *        'label' => string 'My text' (length=7)
+ *        'type' => string 'text' (length=4)
+ *        'value' => string '' (length=0)
+ *    'myselect' =>
+ *      array (size=4)
+ *        'label' => string 'My select' (length=9)
+ *        'type' => string 'select' (length=6)
+ *        'options' =>
+ *          array (size=2)
+ *            'foo' => string 'Foo' (length=3)
+ *            'bar' => string 'Bar' (length=3)
+ *        'value' =>
+ *          array (size=1)
+ *            0 => string 'foo' (length=3)
+ */
 ```
 
 For get one param:
 
-```PHP
+```php
+<?php
 $param = $content->getParam('mytext');
 
-#That return the definition and new value
-array (size=3)
-  'label' => string 'My text' (length=7)
-  'type' => string 'text' (length=4)
-  'value' => string '' (length=0)
+/** That return the definition and new value
+ *  array (size=3)
+ *    'label' => string 'My text' (length=7)
+ *    'type' => string 'text' (length=4)
+ *    'value' => string '' (length=0)
+ */
 ```
 
 For get the value of the param:
-```PHP
+```php
+<?php
 $paramValue = $content->getParamValue('mytext');
 
-#that return the new value
-string '' (length=0)
+// That return the new value string '' (length=0)
 ```
 
 For set a value, you need to set a same type which you declare in YAML file as value:
-```PHP
+```php
+<?php
 $content->setParam('mytext', 'foo');
 $param = $content->getParamValue('mytext')
 
-#That return a new value set
-string 'foo' (length=3)
-
+// That return a new value set  string 'foo' (length=3)
 ```
 
-## Describe all available parameters
+## Parameters reference
 
-- checkbox
-- datetimepicker
-- hidden
-- linkSelector
-- mediaSelector
-- nodeSelector
-- password
-- radio
-- select
-- text
-- textarea
+* checkbox
+* datetimepicker
+* hidden
+* linkSelector
+* mediaSelector
+* nodeSelector
+* password
+* radio
+* select
+* text
+* textarea
 
 All parameters has default options:
 
@@ -149,9 +158,9 @@ Like HTML checkbox attribute
 **inline** | Boolean | Display checkbox inline | false | No |
 **value** | Array | List of selected checkbox | Empty array | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mycheckbox:
         type: 'checkbox'
@@ -161,9 +170,10 @@ parameters:
         value: ['foo']
         inline: true
 ```
-```
-$param = $content->getParamValue('mycheckbox');
-# array('foo')
+
+```php
+<?php
+$param = $content->getParamValue('mycheckbox'); // sarray('foo')
 ```
 ***
 
@@ -175,18 +185,20 @@ Element text with a datetimepicker
 --- | --- | --- | --- | ---
 **value** | Number | It is an timestamp value | Empty | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mydatetimepicker:
         type: 'datetimepicker'
         value: 1435573740
 ```
+
+```php
+<?php
+$param = $content->getParamValue('mydatetimepicker'); //return 1435573740
 ```
-$param = $content->getParamValue('mydatetimepicker');
-# return 1435573740
-```
+
 ***
 
 #### Hidden
@@ -197,18 +209,20 @@ Like HTML hidden attribute
 --- | --- | --- | --- | ---
 **value** | String | The default text  | Empty | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     myhidden:
         type: 'hidden'
         value: 'foo'
 ```
+
+```php
+<?php
+$param = $content->getParamValue('myhidden'); // foo
 ```
-$param = $content->getParamValue('myhidden');
-# foo
-```
+
 ***
 
 #### Link selector
@@ -219,24 +233,26 @@ Link selector allow to choose a link from tree page or external link.
 --- | --- | --- | --- | ---
 **value** | Json | Object which contains url / title / pageUid / target  | Empty array | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mylinkselector:
         type: 'linkSelector'
         value: []
 ```
-```
-# Exemple with select one link
+
+```php
+<?php
+# Example with select one link
 $param = $content->getParamValue('mylinkselector');
-# array('url' => '/foo', 'title' => 'Foo', 'pageUid' => 'anPageUid', 'target' => '_self')
+// array('url' => '/foo', 'title' => 'Foo', 'pageUid' => 'anPageUid', 'target' => '_self')
 ```
 ** Page tree **:
 We recommend to retrieve the url from the page entity instead of the url attribute cause the url can change.
 
-** Externak link ** :
-pageUid attribute is null
+** External link ** :
+In this case, note the pageUid attribute is (obviously) null.
 
 ***
 
@@ -248,19 +264,22 @@ Media selector allow to choose a list of media from the media library.
 --- | --- | --- | --- | ---
 **value** | Json | Object which contains folder_uid / image / media_id / title /type / uid  | Empty array | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mymediaselector:
         type: 'mediaSelector'
         value: []
 ```
-```
-# Exemple with select one media
+
+```php
+<?php
+# Example with select one media
 $param = $content->getParamValue('mymediaselector');
-# array(array('folder_uid' => 'anFolderUid', 'image' => 'imageUrl', 'media_id' => '1', 'title' => '_Foo', 'type' => 'Media/Image', 'uid' => 'anUid'))
+// array(array('folder_uid' => 'anFolderUid', 'image' => 'imageUrl', 'media_id' => '1', 'title' => '_Foo', 'type' => 'Media/Image', 'uid' => 'anUid'))
 ```
+
 ***
 
 #### Node selector
@@ -271,16 +290,17 @@ Node selector allow to choose a page from tree
 --- | --- | --- | --- | ---
 **value** | Json | Object which contains url  pageUid / title  | Empty array | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mynodeselector:
         type: 'nodeSelector'
         value: []
 ```
-```
-# Exemple with select one node
+
+```php
+# Example with select one node
 $param = $content->getParamValue('mynodeselector');
 # array('pageUid' => 'anPageUid', 'title' => 'Foo')
 ```
@@ -296,17 +316,18 @@ Like HTML password attribute
 --- | --- | --- | --- | ---
 **value** | String | The default text | Empty | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mypassword:
         type: 'password'
         value: 'foo'
 ```
-```
-$param = $content->getParamValue('mypassword');
-# foo
+
+```php
+<?php
+$param = $content->getParamValue('mypassword'); // foo
 ```
 ***
 
@@ -320,9 +341,9 @@ Like HTML radio attribute
 **inline** | Boolean | Display radio inline | false | No |
 **value** | Array | List of selected radio | Empty array | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     myradio:
         type: 'radio'
@@ -332,9 +353,10 @@ parameters:
         value: ['foo']
         inline: true
 ```
-```
-$param = $content->getParamValue('myradio');
-# array('foo')
+
+```php
+<?php
+$param = $content->getParamValue('myradio'); // array('foo')
 ```
 ***
 
@@ -348,9 +370,9 @@ Like HTML select attribute
 **value** | Array | List of selected radio | Empty array | Yes |
 **multiple** | Boolean | Allow to multiple selection | false | No
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mypassword:
         type: 'select'
@@ -360,10 +382,12 @@ parameters:
         value: ['foo']
         multiple: true
 ```
+
+```php
+<?php
+$param = $content->getParamValue('myradio'); //array('foo')
 ```
-$param = $content->getParamValue('myradio');
-# array('foo')
-```
+
 ***
 
 #### Text
@@ -374,17 +398,18 @@ Like HTML text attribute
 --- | --- | --- | --- | ---
 **value** | String | The default text | Empty | Yes |
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mytext:
         type: 'text'
         value: 'foo'
 ```
-```
-$param = $content->getParamValue('mypassword');
-# foo
+
+```php
+<?php
+$param = $content->getParamValue('mypassword'); // foo
 ```
 ***
 
@@ -397,18 +422,19 @@ Like HTML textearea attribute
 **value** | String | The default text | Empty | Yes |
 **rows** | String | the rows html attribute | 5 | No
 
-**Exemple**: 
+**Example**:
 
-``` 
+```yaml
 parameters:
     mytextearea:
         type: 'textarea'
-        value: 'foo'
-	rows: 10
+        value: 'BackBee'
+        rows: 10
 ```
-```
-$param = $content->getParamValue('mytextearea');
-# foo
+
+```php
+<?php
+$param = $content->getParamValue('mytextearea'); // BackBee
 ```
 ***
 
@@ -422,11 +448,12 @@ Rendermode parameters allow to list automatically rendermodes of the content and
 --- | --- | --- | --- | ---
 **value** | Array | Selected rendermode | Empty | Yes |
 
-``` 
+```yaml
 parameters:
     rendermode:
         type: 'select'
         value: []
 ```
+
 **The key must be 'rendermode'**
 
