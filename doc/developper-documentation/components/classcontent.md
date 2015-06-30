@@ -156,7 +156,7 @@ Like HTML checkbox attribute
 --- | --- | --- | --- | ---
 **options** |  Array | List of options (key/value) | Empty array | Yes
 **inline** | Boolean | Display checkbox inline | false | No |
-**value** | Array | List of selected checkbox | Empty array | Yes |
+**value** | Array | List of selected checkboxes | Empty array | Yes |
 
 **Example**:
 
