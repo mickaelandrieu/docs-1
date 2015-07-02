@@ -6,7 +6,7 @@ This component is used in BackBee to set parameters from YAML files into the Con
 
 ## How the Config component work ?
 
-The BackBee Config Component provide a ``Config`` object able to:
+The BackBee Config Component provides a ``Config`` object able to:
 
 * Parse YAML files from a directory;
 * Persist this configuration in file or in database;
@@ -44,7 +44,7 @@ class Config implements DispatchTagEventInterface, DumpableServiceInterface
 The BackBee Config Component can take a valid directory as argument, and merge the configuration according to the data set
 in this YAML files. If you don't know YAML, you can take a look to the [Symfony YAML format documentation](http://symfony.com/doc/current/components/yaml/yaml_format.html).
 
-Moreover, BackBee Config component allow you to ignore some files.
+Moreover, BackBee Config component allows you to ignore some files.
 
 ```php
 <?php
@@ -68,7 +68,7 @@ This way, the ignored files won't be parsed.
 
 
 Thanks to the *BackBee environments*, you can also extend and improve your default configuration.
-For instance, let's say you want to add a specific configuration when your are in "testing" environment.
+For instance, let's say you want to add a specific configuration when your are in a "testing" environment.
 
 You can set the environment this way:
 
@@ -131,15 +131,15 @@ class Foo
 
 ## Configuration persisting
 
-The BackBee Config Component can persist configurations in file or in database, you can also create your owns "persistors"
+The BackBee Config Component can persist configurations in file or in database, you can also create your own "persistors"
 thanks to the ``BackBee\Config\PersistorInterface``.
 
 For now, two persistors are provided in BackBee CMS:
 
-* the **File** Persistor allow you to write and override the main configuration file (config.yml)
+* the **File** Persistor allows you to write and override the main configuration file (config.yml)
 * the **Registry** Persistor is a simple database Key/Value system
 
-If we take a look to the BackBee CMS configuration:
+If we take a look at the BackBee CMS configuration:
 
 ```yaml
 config:
@@ -149,8 +149,8 @@ config:
 
 * ``save_in_registry`` is a particular option: if true, this means BackBee will try to look for an overidden configuration
   stored in Registry.
-* ``persistor`` is the list of activated persistor, BackBee will loop on each and try to find configuration. If no one
-  provide the requested configuration, an exception will be throw.
+* ``persistor`` is the list of activated persistors. BackBee will loop on each and try to find configuration. If no one
+  provides the requested configuration, an exception will be thrown.
 
 ## Configuration caching
 
