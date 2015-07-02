@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.backbee.com/developper-documentation/cookbooks/customize_error_pages/">
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/cookbooks/use_swift_mailer_in_backbee/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Customize error pages - The BackBee documentation</title>
+	<title>Use Swift Mailer in BackBee - The BackBee documentation</title>
 
         <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -89,12 +89,12 @@
                             <a href="../create_new_commands/">Create new commands</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Customize error pages</a>
+                        <li >
+                            <a href="../customize_error_pages/">Customize error pages</a>
                         </li>
                     
-                        <li >
-                            <a href="../use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        <li class="active">
+                            <a href="./">Use Swift Mailer in BackBee</a>
                         </li>
                     
                         <li >
@@ -139,12 +139,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../create_new_commands/">
+                    <a rel="next" href="../customize_error_pages/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../use_swift_mailer_in_backbee/">
+                    <a rel="prev" href="../create_bundle_administration/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -169,7 +169,9 @@
     
         <li class="main active"><a href="#cookbooks">CookBooks</a></li>
         
-            <li><a href="#customize-error-pages">Customize error pages</a></li>
+            <li><a href="#use-swiftmailer-in-backbee">Use Swiftmailer in BackBee</a></li>
+        
+            <li><a href="#configuration">Configuration</a></li>
         
     
     </ul>
@@ -177,38 +179,89 @@
             <div class="col-md-9" role="main">
 
 <h1 id="cookbooks">CookBooks</h1>
-<h2 id="customize-error-pages">Customize error pages</h2>
-<p>In BackBee, thanks to Symfony Debug component all errors are treated as exceptions: pages not found or access unauthorized.
-Each error is triggered by throwing an exception in your code.</p>
-<p>In "Developper Mode" BackBee will catch and display a <strong>better</strong> exception page with a lot of informations
-to help you understand the issue:</p>
-<p><img alt="The BackBee Developper exception displayer" src="http://i.imgur.com/GwvS1qE.png" /></p>
-<p>In production, your visitors will see the nice error page provided by BackBee:</p>
-<p><img alt="The BackBee Production exception displayer" src="http://i.imgur.com/tml7ozz.png" /></p>
-<p>Error pages can be customized in two different ways depending on your needs:</p>
-<ul>
-<li>If you just want to design the contents and styles of the error pages, you can set your own error templates</li>
-<li>If you need total control of exception handling to execute your own logic, create your own ExceptionListener on <code>kernel.exception</code> event.</li>
-</ul>
-<h3 id="use-your-own-default-templates">Use your own default templates</h3>
-<p>When the error page loads, an internal ExceptionListener is used to render a Twig template to show template to the user.</p>
-<p>This ExceptionListener uses the HTTP status code, the <code>debug</code> parameter and the following logic to determine the template filename:</p>
-<p>BackBee provides core templates which are located into <code>vendor/backbee/BackBee/Resources/layouts/error</code>.
-If the template for the code status doesn't exist, the default template which be used instead.</p>
-<p>In BackBee Standard edition, theses templates are already overriden in the <strong>ToolbarBundle</strong>. Theses templates are located
-into <code>vendor/backbee/toolbar-bundle/Resources/layouts/error</code> folder.</p>
-<p>If you want to override theses templates, your application might look like this:</p>
-<pre><code>repository/
-    Resources/
-        layouts/
-            error/
-                404.phtml
-                500.twig
-                default.phtml
+<h2 id="use-swiftmailer-in-backbee">Use Swiftmailer in BackBee</h2>
+<h3 id="introduction">Introduction</h3>
+<p>In BackBee there is no home made component for mailing. We actually use Swift Mailer library.
+BackBee only provides a way to configure it and get your instance initialized easily.</p>
+<h2 id="configuration">Configuration</h2>
+<p>To configure Swift Mailer in BackBee you need to create mailer.yml into your global configuration folder <code>repository/Config</code>.</p>
+<p>The minimal configuration file is composed of an SMTP and  a port</p>
+<pre><code class="yml">smtp: localhost
+port: 25
 </code></pre>
 
-<p>In case you need them, the ExceptionController passes informations to the error template via the error variable.
-It acts as the original PHP exception so you can access the HTTP status code and exception message.</p></div>
+<p>You can also set up more parameters for more security on SMTP.</p>
+<pre><code class="yml">smtp: localhost
+port: 587
+username: mailer_user_identifier
+password: superSecretPassword
+</code></pre>
+
+<h3 id="basic-usage-example">Basic usage example</h3>
+<p>To retrieve the configured mailer you need an access to your Application.
+You can start with a new app, but for performances matters prefer use the current Application.
+The example will be placed in the context of an EventListener. <em>This is not a good practice to place your business logic into an EventListener</em> but it is easier to understand.</p>
+<pre><code class="php">&lt;?php
+namespace BackBee\Bundle\DocumentationBundle\Listener;
+
+use BackBee\Event\Event;
+use BackBee\Site\Site;
+
+class MailerListener
+{
+    public static function onSomethingNeedToBeMailed(Event $event)
+    {
+        // retrieve your current Application
+        $application = $event-&gt;getDispatcher()-&gt;getApplication();
+
+        // retrieve other informations
+        $site = $application-&gt;getSite();
+
+        if ($site instanceof Site) {
+            // render e-mail body by using partial method from the renderer
+            $body = $application-&gt;getRenderer()-&gt;partial(
+                'Email/Email.twig',
+                [
+                    'site_name' =&gt; $site-&gt;getLabel(),
+                    'home_link' =&gt; $site-&gt;getServerName(),
+                ]
+            );
+
+            // Build the message
+            $message = static::buildMessage(
+                $body,
+                $application-&gt;getSite(),
+            );
+
+            // now get the configured mailer by passing by application and send your message
+            $application-&gt;getMailer()-&gt;send($message);
+        }
+    }
+
+    /**
+     * E-mail message creation
+     */
+    public static function buildMessage($body, $site)
+    {
+        $from = 'administrator@' . $site-&gt;getServerName();
+
+        // Create Swift_Message
+        $message = \Swift_Message::newInstance();
+        // Set the From address
+        $message-&gt;addFrom($from, $site-&gt;getLabel());
+        // Set the To addresses
+        $message-&gt;addTo($from, $site-&gt;getLabel());
+        // Give the message a subject
+        $message-&gt;setSubject('Something append on ' . $site-&gt;getLabel());
+        // Give it the body
+        $message-&gt;setBody($body, 'text/html', 'UTF-8');
+
+        return $message;
+    }
+}
+</code></pre>
+
+<p>If you want do more with Swift Mailer, you can find additional documentation on <a href="http://swiftmailer.org/">Swift Mailer web site</a></p></div>
         </div>
 
 	<footer class="col-md-12">

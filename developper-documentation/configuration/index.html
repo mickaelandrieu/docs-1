@@ -93,6 +93,43 @@
                             <a href="../cookbooks/customize_error_pages/">Customize error pages</a>
                         </li>
                     
+                        <li >
+                            <a href="../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../components/classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/config/">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/security/">Security</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -141,10 +178,10 @@
 
 <h1 id="developper-documentation">Developper documentation</h1>
 <h2 id="configuration">Configuration</h2>
-<p>BackBee CMS is powerful but highly configurable.
-In this section, all the available configuration is broken down by the key (e.g. doctrine) that defines each possible section of your application configuration.</p>
+<p>BackBee CMS is powerful and highly configurable.
+In this section, all the available configurations are broken down by the key (e.g. doctrine) that defines each possible section of your application configuration.</p>
 <h3 id="bootstrap-configuration-bootstrapyml">Bootstrap configuration (bootstrap.yml)</h3>
-<p>This configuration file have only two responsabilities:</p>
+<p>This configuration file has only two functions:</p>
 <ul>
 <li><code>debug</code>: set the developper mode: if <strong>true</strong>, the container is generated at each request.</li>
 <li><code>container</code>: set the container configuration which have 2 parameters<ul>
@@ -153,7 +190,7 @@ In this section, all the available configuration is broken down by the key (e.g.
 </ul>
 </li>
 </ul>
-<p>The <code>autogenerate</code> option is useful when you want to force the generation of the container in "production": don't forget this option have a performance cost.</p>
+<p>The <code>autogenerate</code> option is useful when you want to force the generation of the container in "production". Don't forget this option has a performance cost.</p>
 <h3 id="bundles-configuration-bundlesyml">Bundles configuration (bundles.yml)</h3>
 <p>To activate a bundle, you need to register it in this file:</p>
 <pre><code class="yaml"># /repository/Config/bundles.yml
@@ -163,7 +200,7 @@ toolbar: BackBee\Bundle\ToolbarBundle\Toolbar
 </code></pre>
 
 <h3 id="database-configuration-doctrineyml">Database configuration (doctrine.yml)</h3>
-<p>We provide a demo sample configuration, you can see all available parameters into the related <a href="http://symfony.com/doc/current/reference/configuration/doctrine.html">Doctrine configuration of Symfony</a>:</p>
+<p>We provide a demo sample configuration. You can see all available parameters into the related <a href="http://symfony.com/doc/current/reference/configuration/doctrine.html">Doctrine configuration of Symfony</a>:</p>
 <pre><code class="yaml"># /repository/Config/doctrine.yml
 dbal:
     driver: pdo_mysql # [mysql|pgsql|sqlite]
@@ -190,7 +227,7 @@ orm:
 </code></pre>
 
 <h3 id="seo-configuration-metadatayml">SEO Configuration (metadata.yml)</h3>
-<p>This is where you set the HTML meta headers you want to configure for each page of BackBee:</p>
+<p>This is where you set up the HTML meta headers you want to configure for each page of BackBee:</p>
 <pre><code class="yaml"># /repository/Config/metadata.yml
 keywords:
     name: 'keywords'
@@ -209,10 +246,10 @@ robots:
 
 </code></pre>
 
-<p>This configuration have a real impact in the toolbar, see the generated SEO form in Page context mode:</p>
+<p>This configuration has a real impact on the toolbar, see the generated SEO form in Page context mode:</p>
 <p><img alt="SEO form option of BackBee page" src="http://i.imgur.com/hpUmrob.png" /></p>
 <h3 id="security-configuration-securityyml">Security Configuration (security.yml)</h3>
-<p>You can configure firewalls and suoders inside this file, a sudoer is a super administrator:</p>
+<p>You can set up firewalls and sudoers inside this file. A sudoer is a super administrator:</p>
 <pre><code class="yaml"># /repository/Config/security.yml
 firewalls:
     firewall_name: { pattern: ^/, anonymous: null }

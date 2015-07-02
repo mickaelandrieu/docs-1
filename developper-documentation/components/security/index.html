@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/components/security/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Security - The BackBee documentation</title>
+
+        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">The BackBee documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Introduction</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../requirements/">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../installation/">Installation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../architecture/">Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../configuration/">Configuration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbooks <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../cookbooks/create_new_commands/">Create new commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/customize_error_pages/">Customize error pages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../config/">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../routing/">Routing</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Security</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../routing/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/backbee/docs">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#components">Components</a></li>
+        
+            <li><a href="#the-security-component">The Security component</a></li>
+        
+            <li><a href="#overview-of-security-mechanism">Overview of security mechanism</a></li>
+        
+            <li><a href="#authentication">Authentication</a></li>
+        
+            <li><a href="#authorization">Authorization</a></li>
+        
+            <li><a href="#backbee-securitycontext-and-the-contextinterface">BackBee SecurityContext and the ContextInterface</a></li>
+        
+            <li><a href="#configuring-security-with-securityyml">Configuring Security with security.yml</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="components">Components</h1>
+<h2 id="the-security-component">The Security component</h2>
+<p><code>BackBee</code> Security component is based on the Security Component of <code>Symfony</code>.</p>
+<p>It provides a robust way to secure a web application. Here we will present some of the core concepts of this component : <code>firewall</code>, <code>FirewallMap</code>, <code>authentication</code> , <code>authorization</code>, <code>DecissionAccess</code>,  <code>Voter</code>, <code>SecurityContext</code>.</p>
+<h2 id="overview-of-security-mechanism">Overview of security mechanism</h2>
+<p>The main purpose of the security component is to deal with <em>authentication</em> and <em>authorization</em>.</p>
+<p>Authentication is a way to grant access to a ressource. When a user is successfully authentified, authorization is a way to control access to a specific ressource.</p>
+<p>Authentication is handled by what is called a <em>firewall</em>. An application can have many secured areas, an admin area for instance.</p>
+<p>A secured area is determined by an <em>url</em>. When an url that is part of a secured area is requested, behind the hook some registered callbacks are executed.</p>
+<p>The <code>Firewall</code> archives this by listening to the <code>symfony</code> <code>kernel.request</code> event triggered by the HttpKernel.
+A <code>FirewallMap</code> maps a <code>request</code> with the registered listeners then checks if the current request is under a secured area or is already secured.</p>
+<p>A <code>FirewallMap</code> Listener can authenticate a request, throws an <code>AuthenticationException</code> or do nothing. If one of these listeners throw an exception (meaning that the request is not authentificated), this exception can either be transformed into an <code>AccessDeniedHttpException</code> or used to initiate an authentication process by calling the <code>Firewall</code> entry point.</p>
+<h2 id="authentication">Authentication</h2>
+<p>A firewall entry point, as it implements the <code>authenticationEntryPointInterface</code>, must provided a <code>start</code> method which takes two parameters: a request and the exception previously raised.</p>
+<p><code>start</code> must return a <code>Response</code> object that can be a page showing a form for instance.
+If one of the <code>FirewallMap</code> Listener can handle the request, it creates a <code>Token</code> object that holds a reference to the current user, its roles and its credentials.
+The listener then uses an <code>authenticationProviderManager</code> object to authenticate the <code>Token</code>. <code>authenticationProviderManager</code> will authenticate the token if provided and return an <em>authenticated</em> one if the user credential is valid.</p>
+<p>Otherwise an <code>AuthenticationException</code> is raised.
+Each <em>Token</em> uses a specific type of <em>authenticationProvider</em>. An <em>authenticationProvider</em> must implements the <code>authenticationProviderInterface</code> and provides the two methods :  <code>authentificate</code> which takes one paramater that must implements the <code>TokenInterface</code> and <code>supports</code> which is used to check whether or not the given <code>token</code> is supported by the authentication provider .</p>
+<p>Registered FirewallMap Listeners must implement the <code>ListenerInterface</code> thus provided an <code>handle</code> method that accept an <code>GetRequestEvent</code> object.</p>
+<h2 id="authorization">Authorization</h2>
+<p>Once a user is identified his roles or any other attributes or object of its <code>token</code> can be used to determine whether or not he has access to a resource.</p>
+<h3 id="decision-manager">Decision manager</h3>
+<p>An <code>AccessControlManager</code> is used to make final access decisions based on <code>Voter</code>.</p>
+<p>A voter can decide to <code>vote</code> either for grant or deny access to a ressource. A voter can also abstain itself.</p>
+<p>By default The <code>AccessControllerManagers</code> make his decision according to one these three strategies:</p>
+<ul>
+<li><strong>affirmative</strong> (Access is granted if any voter votes for granting access)</li>
+<li><strong>consensus</strong> (Access is granted if there are more voters willing to granting access then otherwise</li>
+<li><strong>unanimous</strong> (Access is granted if all voters vote for granting access)</li>
+</ul>
+<h4 id="understand-voters">Understand voters</h4>
+<p>A voter class must implements the <code>VoterInterface</code> which has 4 methods:</p>
+<ul>
+<li><strong>supportsAttribute($attribute)</strong></li>
+<li><strong>supportsClass($class)</strong></li>
+<li><strong>vote(TokentInterface $token, $object, $attributes)</strong></li>
+</ul>
+<p><code>supportsAttribute</code> is used to check if the voter supports some attributes of the token.
+<code>supportClass</code> is user to check it the voter supports a specific class
+<code>vote</code> handle the vote strategy and must return of those class Constant :</p>
+<ul>
+<li>VoterInterface::ACCESS_GRANTED</li>
+<li>VoterInterface::ACCESS_ABSTAIN</li>
+<li>VoterInterface::ACCESS_DENIED</li>
+</ul>
+<p>Bellow is list of Voter used in BackBee
+<em> AccessVoter
+</em> BBAclVoter
+<em> BBRoleVoter
+</em> SudoVoter</p>
+<h2 id="backbee-securitycontext-and-the-contextinterface">BackBee SecurityContext and the ContextInterface</h2>
+<p>All the process of creating <code>Firewall</code>, <code>FirewallMap</code>, <code>AuthenticationManager</code>, <code>AccessDecisionMananger</code> and listeners is handled by the <code>BackBee\Security\SecurityContext</code> object.</p>
+<p>However the way of dealing with security Listerners is simplyfied by using a <code>Context</code> object.
+A security <code>Context</code> extends the abstract class <code>BackBee\Security\Context\BBAuthContext</code> and defines the <strong>loadListeners</strong> method.</p>
+<p><code>LoadListeners</code> accepts one parameter which is the security config that can be setted in <code>repository/Config/security.yml</code>.
+A context can be used to instanciate new listener or to register new authentication provider to the <code>SecuriryContext</code>.</p>
+<p>Bellow we show all the  security contexts provided by BackBee.</p>
+<ul>
+<li>AnonymousContext</li>
+<li>BBAuthContext</li>
+<li>LogoutContext</li>
+<li>RestfulContext</li>
+<li>StatelessContext</li>
+<li>UsernamePasswordContext</li>
+</ul>
+<h4 id="anonymouscontext">AnonymousContext</h4>
+<p><code>AnonymouseContext</code> is used to identify anonymous user.</p>
+<ul>
+<li><strong>authentication provider</strong> : <code>BackBee\Security\Authentication\Provider\AnonymousAuthenticationProvider</code></li>
+<li><strong>Listener</strong>: <code>BackBee\Security\Listeners\AnonymousAuthenticationListener</code></li>
+<li><strong>Token</strong> : <code>BackBee\Security\Token\AnonymousToken</code></li>
+</ul>
+<h4 id="bbauthcontext">BBAuthContext</h4>
+<p><code>BBAuthContext</code> is used to authentify a user by using the BackBee User table.</p>
+<ul>
+<li><strong>authentication provider</strong> : <code>BackBee\Security\Authentication\Provider\BBAuthenticationProvider</code></li>
+<li><strong>Listener</strong>: <code>BackBee\Security\Listeners\AnonymousAuthenticationListener</code></li>
+<li><strong>Token</strong> : <code>BackBee\Security\Token\BBUserToken</code></li>
+</ul>
+<h4 id="logoutcontext">LogoutContext</h4>
+<p><code>LogoutContext</code> handles user logout by removing all setted tokens.</p>
+<ul>
+<li><strong>authentication provider</strong> : <code>none</code></li>
+<li><strong>Token</strong> : <code>none</code></li>
+<li><strong>Listener</strong>: <code>BackBee\Security\Listeners\LogoutListener</code></li>
+</ul>
+<h4 id="restfulcontext">RestfulContext</h4>
+<p><code>RestfulContext</code> is used to authentify rest user with a plublic key.</p>
+<ul>
+<li><strong>authentication provider</strong>: <code>BackBee\Security\Listeners\PublicKeyAuthenticationProvider</code></li>
+<li><strong>Listener</strong> : <code>BackBee\Security\Listeners\PublicKeyAuthenticationListener</code></li>
+<li><strong>Token</strong>: <code>BackBee\Security\Token\BBUserToken</code></li>
+</ul>
+<h4 id="statelesscontext">StatelessContext</h4>
+<p>In stateless mode, authentication is asked for every requests. <code>StatelessContext</code> handles sessions
+creation every time stateless mode is disabled.</p>
+<ul>
+<li><strong>authentication provider</strong>: <code>none</code></li>
+<li><strong>Listener</strong>: <code>BackBee\Security\Listeners\ContextListener</code></li>
+<li><strong>Token</strong>: <code>none</code></li>
+</ul>
+<h4 id="usernamepasswordcontext">UsernamePasswordContext</h4>
+<p><code>UsernamePasswordContext</code>is used to authenticate user by using a login form.</p>
+<ul>
+<li><strong>authentication provider</strong>: <code>BackBee\Security\Listeners\Provider\UserAuthenticationProvider</code></li>
+<li><strong>Listener</strong>: <code>BackBee\Security\Listeners\UsernamePasswordAuthenticationListener</code></li>
+<li><strong>Token</strong>: <code>BackBee\Security\Token\UsernamePasswordToken</code></li>
+</ul>
+<h2 id="configuring-security-with-securityyml">Configuring Security with <code>security.yml</code></h2>
+<p>Security configurations can be handled with a simple yml file. This file can be found in <code>repository/Config/security.yml</code>.</p>
+<pre><code class="yaml">firewalls:
+    bb_area:
+        pattern: ^/
+        requirements:
+            HTTP-X-Requested-With: XMLHttpRequest
+            HTTP-X-BB-METHOD: (JsonRpc|Upload)
+        provider: bb_user
+        bb_auth:
+            provider: bb_user
+            nonce_dir: security/nonces
+            lifetime: 1800
+            use_registry: true
+
+providers:
+    bb_user:
+        entity:
+            class: BackBee\Security\User
+        secret: %secret_key%
+    public_key:
+        entity:
+            class: BackBee\Security\User
+
+contexts:
+    BackBee\Security\Context: [StatelessContext, AnonymousContext, BBAuthContext, UsernamePasswordContext, LogoutContext, RestfulContext]
+
+encoders:
+    BackBee\Security\User:
+        class: Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder
+        arguments:
+            algorithm: md5
+            encode_as_base64: false
+            iterations: 1
+
+acl:
+    connection: default
+</code></pre></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.</center>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../js/backbee.js"></script>
+    </body>
+</html>

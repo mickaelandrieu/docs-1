@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/components/event_listener/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Event Listener - The BackBee documentation</title>
+
+        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">The BackBee documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Introduction</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../requirements/">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../installation/">Installation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../architecture/">Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../configuration/">Configuration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbooks <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../cookbooks/create_new_commands/">Create new commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/customize_error_pages/">Customize error pages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../config/">Config</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../security/">Security</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../config/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../routing/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/backbee/docs">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#components">Components</a></li>
+        
+            <li><a href="#the-event-listener-component">The Event Listener component</a></li>
+        
+            <li><a href="#event">Event</a></li>
+        
+            <li><a href="#event-listener">Event Listener</a></li>
+        
+            <li><a href="#event-dispatcher">Event Dispatcher</a></li>
+        
+            <li><a href="#events-from-class-content-component">Events from Class Content Component</a></li>
+        
+            <li><a href="#classcontent-listener">ClassContent Listener</a></li>
+        
+            <li><a href="#event-inheritance">Event inheritance</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="components">Components</h1>
+<h2 id="the-event-listener-component">The Event Listener component</h2>
+<p><em>Events</em> are a common and effective way to tie together loosely coupled components in an application.
+An event is generally used to broadcast a change that has occured during a process. If a <code>component</code> is
+interested in a particular event, it can <em>listen</em> to it. When this particular event is triggered, a <code>method</code>,
+often called <em>callback</em> or <em>handler</em> is executed. Events are convenient ways to share
+data between components.
+In <code>BackBee</code>, events are triggered by an <em>EventDispatcher</em> and an <em>EventListener</em> is used to listen to them.</p>
+<h2 id="event">Event</h2>
+<p><code>Namespace: BackBee\Event\Event</code></p>
+<p>The Backbee event class extend <code>sfEvent</code> and allows us to create a generic <code>Event</code> object.
+A generic event object has two properties: <code>target</code> and <code>args</code>;
+The target property represents the target of the event. The <code>args</code> is an optional associated map.
+When the <code>args</code> property is provided, it's sent to the listeners.
+Custom Event can be created by extending the class <code>BackBee\Event\Event</code>.</p>
+<pre><code class="php">&lt;?php
+$myHelloEvent = new Event($target, array(&quot;message&quot;=&gt;&quot;Hello BackBee&quot;);
+
+</code></pre>
+
+<h2 id="event-listener">Event Listener</h2>
+<p><code>Namespace: BackBee\Event\EventListener</code></p>
+<p>To listen to an event you must use the <code>addListener</code> method of the <code>EventDispatcher</code>.
+<code>addListener</code> takes three parameters. The first one is the name of the event that will be triggered, the second is an array whose first element
+is a class path and the second is a method. The last parameter is the priority of the event. Listener with higher priority will be triggered first.</p>
+<pre><code>$this-&gt;application-&gt;getEventDispatcher()-&gt;addListener("loading.event", array("BackBee/Event/Listener/HelloListener", "sayHello"));
+</code></pre>
+<p>Here, we register the listener <em>HelloListener</em> to be executed when the event <code>loading.event</code> is occured.</p>
+<pre><code class="php">    &lt;?php
+
+        namespace BackBee\Event\Listener;
+        use BackBee\Event\Event;
+
+        class HelloListener {
+
+            public static sayHello (Event $event) {
+
+                $dispatcher = $event-&gt;getDispatcher();
+
+                if ($event-&gt;hasArguments(&quot;message&quot;)) {
+                    $message = $event-&gt;get(&quot;message&quot;);
+                    if ( null !== $dispatcher-&gt;getApplication()) {
+                        $dispatcher-&gt;getApplication()-&gt;getLogging()-&gt;notice($message);
+                    }
+                }
+            }
+        }
+
+    ?&gt;
+</code></pre>
+
+<p>Notice that the event object has access to the <code>application</code> <em>via</em> the <code>EventDispacher</code> and that the <code>sayHello</code> is a <em>static</em> method.</p>
+<h2 id="event-dispatcher">Event Dispatcher</h2>
+<p><code>Namespace: BackBee\Event\EventListener</code></p>
+<p>Events are <em>dispatched</em> or <em>triggered</em> by the <code>EventDispatcher</code> by using the method <code>triggerEvent</code>
+The sample bellow shows how to listen to an event.</p>
+<p>To trigger an event, we must use the <code>EventDispatcher</code>. It provides, among others, a <code>dispatch</code> method that takes two arguments. A name and an event object.</p>
+<pre><code class="php">&lt;?php
+    $this-&gt;application-&gt;getEventDispatcher()-&gt;dispatch(&quot;loading.event&quot;, $myHelloEvent);
+</code></pre>
+
+<p>When the <em>loading.event</em> is dispatched by the <code>EventDispatcher</code>, all the registered listeners will be executed. In our example,
+the static <code>sayHello</code> method of the <code>Backbee/Event/Listener/HelloListener</code> will be called.</p>
+<h2 id="events-from-class-content-component">Events from Class Content Component</h2>
+<p>One of the main purpose of <code>Backbee</code> is to render contents. As we have seen, a
+content is defined in a <code>.yml</code> file. Content creation and content rendering go
+through many phases that <code>Backbee</code> exposes with events. By instance, an event is triggered
+when a content is created, before and after a content has been saved, when the rendering process
+is started, while the content is been rendered, after the renderer process and so on. These events
+allow us the act in different ways on the contents lifecycle and rendering process itself.</p>
+<p>ClassContent events are similar to custom events. But, as they take place when the main application
+is dealing with a request, a common way to listen to them is to use an <code>event.yml</code> config file.
+Will try to local event file in the <code>repository/Config</code> folder. Bellow is an example of how to
+use the file.</p>
+<pre><code class="yaml">    article.article.render:
+        listeners:
+            - [BackBee\Event\Listener\ArticleListener, onRender]
+
+    social.facebook.prerender:
+        listeners:
+            - [BackBee\Event\Listener\Socialistener, PrerenderFacebook]
+</code></pre>
+
+<p><code>events.yml</code> is a declarative way to add listeners to <code>ClassContentEvents</code> event. Under the hook,
+this yaml file is parsed and the <code>EventDispatcher</code> is used to register the listeners.
+In our example,  <code>article.article.render</code> and <code>social.facebook.prerender</code> are events names.
+By convention <code>BackBee</code> transforms ClassContent class path to event name. Let's take a look at our events files.</p>
+<p>According to our <code>event.yml</code>, the <code>article.article.render</code> event will be triggered when
+the content <code>ClassContent/Article/Article.yml</code> is about the be rendered whereas
+the 'social.facebook.prerender' will be triggered <em>before</em> the content <code>ClassContent/Social/Facebook.yml</code>
+was rendered.
+<code>*.render</code>  and <code>*.prerender</code> are events triggered by the <code>Renderer</code> object. Bellow is the list of
+all the Renderer events.</p>
+<ul>
+<li><code>*.prerender</code> : is triggered <em>before</em> the content is being rendered;</li>
+<li><code>*.render</code> : when the content is about to be rendered;</li>
+<li><code>*.postrender</code> : after the render process.</li>
+</ul>
+<p>However there is no strong difference between <em>render</em> and <em>postrender</em>.</p>
+<p>In BackBee all the contents are <code>Doctrine</code> entities. These doctrine events are also available for all the contents.</p>
+<ul>
+<li><code>preremove</code></li>
+<li><code>postremove</code></li>
+<li><code>postupdate</code></li>
+<li><code>preupdate</code></li>
+<li><code>update</code></li>
+<li><code>prepersist</code></li>
+<li><code>postpersist</code></li>
+<li><code>postload</code></li>
+<li><code>onflush</code></li>
+</ul>
+<h2 id="classcontent-listener">ClassContent Listener</h2>
+<p>To listen to a ClassContentEvent we have to create a <code>Listener</code> class. By default BackBee
+will look for Listener in the repository/Config/Listener folder.</p>
+<pre><code class="php">    &lt;?php
+        namespace BackBee\Event\Listener,
+        use BackBee\Event\Event;
+
+        class ArticleListener extends Event {
+
+            public static function onRender(Event $event){
+                /* The renderer object */
+                $renderer = $event-&gt;getEventArgs();
+
+                /* The eventDispatcher */
+                $eventDistacher = $event-&gt;getDispatcher();
+
+                /* the BackBee application */
+                $application = $eventDistacher-&gt;getApplication();
+
+                /* The article classcontent */
+                $content = $renderer-&gt;getObject();
+
+                /* Add a new parameter that will be available in the content template */
+                $renderer-&gt;assign('myParams', &quot;my Param value&quot;);
+            }
+        }
+    ?&gt;
+</code></pre>
+
+<h2 id="event-inheritance">Event inheritance</h2>
+<p>In <code>BackBee</code> content can be inherited from one another. The <code>EventDispatcher</code> respects this inheritance.
+If an event is triggered for a subContent it will also be triggered for its parents. So <em>class content</em> Events bubbles up in BackBee.</p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.</center>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../js/backbee.js"></script>
+    </body>
+</html>

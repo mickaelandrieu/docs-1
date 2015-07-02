@@ -93,6 +93,43 @@
                             <a href="../cookbooks/customize_error_pages/">Customize error pages</a>
                         </li>
                     
+                        <li >
+                            <a href="../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../components/classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/config/">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../components/security/">Security</a>
+                        </li>
+                    
                     </ul>
                 </li>
             
@@ -141,20 +178,20 @@
 
 <h1 id="developper-documentation">Developper documentation</h1>
 <h2 id="installation">Installation</h2>
-<p>Installation of BackBee in developper mode assume assume you have basic knowledge of PHP5, Apache or Nginx and MySQL.</p>
+<p>Make sure you have basic knowledge of PHP5, Apache or Nginx and MySQL to install BackBee in developper mode.</p>
 <h3 id="third-party-software">Third party Software</h3>
-<p>First of all, you need to check that your computer has a friendly working environment for web development. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL, PostgreSQL, SQLite, or any PDO-compatible database engine), and <strong>PHP 5.4</strong> or later.</p>
-<p>At least, you need to install <a href="http://git-scm.com/">git</a> and <a href="https://getcomposer.org/">Composer</a>, the dependency manager for PHP.</p>
-<p>Follow this link to install it if your are on <a href="https://getcomposer.org/doc/00-intro.md#globally">Linux/Unix based OS</a> (like ubuntu or Mac OS X), Composer is also available on <a href="https://getcomposer.org/doc/00-intro.md#installation-windows">Windows system</a>.</p>
+<p>First of all, you need to check that your computer has an appropriate working environment for web development. You need at least a web server (Apache, for instance), a database engine (MySQL, PostgreSQL, SQLite, or any PDO-compatible database engine), and <strong>PHP 5.4</strong>.</p>
+<p>You need to install <a href="http://git-scm.com/">git</a> and <a href="https://getcomposer.org/">Composer</a>, the dependency manager for PHP.</p>
+<p>If your are on Linux/Unix based (like ubuntu or Mac OS X), follow this <a href="https://getcomposer.org/doc/00-intro.md#globally">link</a> for installation. Composer is also available on <a href="https://getcomposer.org/doc/00-intro.md#installation-windows">Windows system</a>.</p>
 <p>In a command line interface, check if <code>composer</code> is correctly installed:</p>
 <p><img alt="composer on cmder" src="http://i.imgur.com/xDZi6Sc.png" title="composer" /></p>
-<p>Also, check your PHP version which should be 5.4 or greater.</p>
+<p>Also, check your PHP version which should be 5.4 or more.</p>
 <p><img alt="PHP on cmder" src="http://i.imgur.com/DkgQJz2.png" title="PHP" /></p>
-<p>Eventually, you need to set up a domain name in your operating system.
-On Unix/Linux based OS, you can add it into <code>/etc/hosts</code> file, we will choose <strong>blogbee.dev</strong>:</p>
+<p>Set up a domain name in your operating system.
+On Unix/Linux based OS, you can add it into <code>/etc/hosts</code> file. In our example: <strong>blogbee.dev</strong>:</p>
 <pre><code>127.0.0.1   blogbee.dev
 </code></pre>
-<p>Ok ! We can now launch the installation process.</p>
+<p>You can now launch the installation process.</p>
 <h3 id="web-installer">Web Installer</h3>
 <p>Open a command line interface and get BackBee:</p>
 <pre><code>$ composer create-project "backbee/backbee-standard" /path/to/your/folder "1.0" -n
@@ -166,23 +203,23 @@ On Unix/Linux based OS, you can add it into <code>/etc/hosts</code> file, we wil
 <p><img alt="BackBee Installer - first step" src="http://i.imgur.com/saok4nc.png" title="BackBee Installer - first step" /></p>
 <p>You need to create <code>cache</code> and <code>log</code> folders with the correct rights, then you can refresh the page and access to the <strong>second step</strong> of the installer.</p>
 <p><img alt="BackBee Installer - step 2" src="http://i.imgur.com/pvaDJIH.png" title="BackBee Installer - step 2" /></p>
-<p>If required, check the <code>repository/Config</code> folder rights and then proceed with the <strong>third</strong> step.</p>
+<p>If required, check the <code>repository/Config</code> folder rights and then go to the <strong>third</strong> step.</p>
 <p>You need to set your database settings. If you use a different database engine than MySQL or MariaDB, set the correct driver else you have nothing to change, only fill the fields <strong>database name</strong>, <strong>username</strong> and <strong>password</strong>.</p>
 <p><img alt="BackBee Installer - step 3" src="http://i.imgur.com/f6ejuwI.png" title="BackBee Installer - step 3" /></p>
 <p>You also need to define your super admin user, fill the credentials then save and continue to the <strong>fourth</strong> step.</p>
 <p><img alt="BackBee Installer - step 3 bis" src="http://i.imgur.com/ZENfnSS.png" title="BackBee Installer - step 3 bis" /></p>
-<p>BackBee Installer creates and populates the database, fill the last information to complete the installation process: the <strong>site_name</strong> and the <strong>domain</strong>.</p>
+<p>BackBee Installer creates and populates the database, fill the last fields to complete the installation process: the <strong>site_name</strong> and the <strong>domain</strong>.</p>
 <p><img alt="BackBee Installer - step 4" src="http://i.imgur.com/kk4xNPw.png" title="BackBee Installer - step 4" /></p>
-<p>You are done: BackBee gives you the <code>Apache</code> or <code>Nginx</code> configuration you have to set to be able to use BackBee on the chosen domain.</p>
+<p>Installation is now completed: BackBee gives you the <code>Apache</code> or <code>Nginx</code> configuration you have to set up to be able to use BackBee on the chosen domain.</p>
 <p><img alt="BackBee Installer - step 5" src="http://i.imgur.com/T13tVjT.png" title="BackBee Installer - step 5" /></p>
 <p><img alt="BackBee Installer - step 5 bis" src="http://i.imgur.com/ePKuLX5.png" title="BackBee Installer - step 5 bis" /></p>
-<p>When you have set your web server, access the site by going to <strong><a href="http://blogbee.dev">http://blogbee.dev</a></strong>.</p>
+<p>When your web server is set up, access the site by going to <strong><a href="http://blogbee.dev">http://blogbee.dev</a></strong>.</p>
 <p>If everything is correctly installed, you should see the BackBee welcome message:</p>
 <p><img alt="BackBee welcome message" src="http://i.imgur.com/rWY8IQk.png" title="BackBee welcome message" /></p>
 <blockquote>
-<p><em>If you can't see BackBee welcome message, check both <code>cache</code> and <code>log</code> folders have the correct rights.</em></p>
+<p><em>If you can't see BackBee welcome message, make sure that <code>cache</code> and <code>log</code> folders have the correct rights. (755 or 777)</em></p>
 </blockquote>
-<p>You can even connect to the "Edition mode", press  <code>CTRL + ALT + B</code> to show the login dialog. Note that we created a super admin user for you with login (=admin) and password (=admin).</p>
+<p>You can now enter your new backoffice buy pressing  <code>CTRL + ALT + B</code>. Fill the login dialog with the credentials you have set up in the fourth step.</p>
 <p><img alt="BackBee Installed - Edition mode" src="http://i.imgur.com/6NUBWCG.png" title="BackBee Installed - Edition mode" /></p></div>
         </div>
 

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/components/config/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Config - The BackBee documentation</title>
+
+        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">The BackBee documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Introduction</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../requirements/">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../installation/">Installation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../architecture/">Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../configuration/">Configuration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbooks <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../cookbooks/create_new_commands/">Create new commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/customize_error_pages/">Customize error pages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../security/">Security</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../classcontent/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../event_listener/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/backbee/docs">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#components">Components</a></li>
+        
+            <li><a href="#the-config-component">The Config component</a></li>
+        
+            <li><a href="#how-the-config-component-work">How the Config component work ?</a></li>
+        
+            <li><a href="#yaml-parsing-filtering-and-extending">YAML parsing, filtering and extending</a></li>
+        
+            <li><a href="#configuration-persisting">Configuration persisting</a></li>
+        
+            <li><a href="#configuration-caching">Configuration caching</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="components">Components</h1>
+<h2 id="the-config-component">The Config component</h2>
+<p>This component is used in BackBee to set parameters from YAML files into the Container.</p>
+<h2 id="how-the-config-component-work">How the Config component work ?</h2>
+<p>The BackBee Config Component provides a <code>Config</code> object able to:</p>
+<ul>
+<li>Parse YAML files from a directory;</li>
+<li>Persist this configuration in file or in database;</li>
+<li>Set this configuration in <code>BackBee Container</code>;</li>
+<li>Save and load configuration from <code>BackBee Cache</code>;</li>
+</ul>
+<pre><code class="php">&lt;?php
+
+use BackBee\Cache\AbstractCache;
+use BackBee\Config\Config;
+use BackBee\DependencyInjection\Container;
+use BackBee\DependencyInjection\DispatchTagEventInterface;
+use BackBee\DependencyInjection\Dumper\DumpableServiceInterface;
+
+class Config implements DispatchTagEventInterface, DumpableServiceInterface
+{
+    public function __construct(
+        $basedir,
+        AbstractCache $cache = null,
+        Container $container = null,
+        $debug = false,
+        array $yml_to_ignore = []
+    ){/*..*/}
+}
+
+?&gt;
+</code></pre>
+
+<p><em>This component is not related and not compatible with Symfony Config component.</em></p>
+<h2 id="yaml-parsing-filtering-and-extending">YAML parsing, filtering and extending</h2>
+<p>The BackBee Config Component can take a valid directory as argument, and merge the configuration according to the data set
+in this YAML files. If you don't know YAML, you can take a look to the <a href="http://symfony.com/doc/current/components/yaml/yaml_format.html">Symfony YAML format documentation</a>.</p>
+<p>Moreover, BackBee Config component allows you to ignore some files.</p>
+<pre><code class="php">&lt;?php
+
+use BackBee\Config\Config;
+
+class Foo
+{
+    const DIRECTORY = '/my-valid/path';
+
+    public function returnConfiguration(array $filesToIgnore)
+    {
+        return new Config(self::DIRECTORY, null, null, false, $filesToIgnore);
+    }
+}
+
+?&gt;
+</code></pre>
+
+<p>This way, the ignored files won't be parsed.</p>
+<p>Thanks to the <em>BackBee environments</em>, you can also extend and improve your default configuration.
+For instance, let's say you want to add a specific configuration when your are in a "testing" environment.</p>
+<p>You can set the environment this way:</p>
+<pre><code class="php">&lt;?php
+
+use BackBee\Config\Config;
+
+class Foo
+{
+    const DIRECTORY = '/my-valid/path';
+
+    public function TestingConfiguration()
+    {
+        $config = new Config('/repository/Config', null, null, false, []);
+
+        return $config-&gt;setEnvironment('testing');
+
+        /**
+         * Now the object is able to parse YAML files from theses directories:
+         * /repository/Config
+         * /repository/Config/testing
+         * and we are also able to parse specific &quot;environment files&quot;:
+         * /repository/Config/foo.testing.yml
+         */
+    }
+}
+
+?&gt;
+</code></pre>
+
+<p>This is simple and powerful, you can be very specific on the configuration you want to use.
+Configurations keys and parameters are merged recursively, starting from base directory to the environnement directory.
+Thank to the "On cascade system", you can also add a new directory to allow an override of the current configuration.</p>
+<pre><code class="php">&lt;?php
+
+use BackBee\Config\Config;
+
+class Foo
+{
+    const DIRECTORY = '/my-valid/path';
+
+    public function overrideTestingConfiguration(Config $config, $directory)
+    {
+        return $config-&gt;extend($directory);
+
+        /**
+         * Now the object is able to parse YAML files from theses directories:
+         * /repository/Config/&lt;$directory&gt;
+         * If a key is declared in &lt;$directory&gt; configuration files, the configuration is overriden
+         */
+    }
+}
+
+?&gt;
+</code></pre>
+
+<h2 id="configuration-persisting">Configuration persisting</h2>
+<p>The BackBee Config Component can persist configurations in file or in database, you can also create your own "persistors"
+thanks to the <code>BackBee\Config\PersistorInterface</code>.</p>
+<p>For now, two persistors are provided in BackBee CMS:</p>
+<ul>
+<li>the <strong>File</strong> Persistor allows you to write and override the main configuration file (config.yml)</li>
+<li>the <strong>Registry</strong> Persistor is a simple database Key/Value system</li>
+</ul>
+<p>If we take a look at the BackBee CMS configuration:</p>
+<pre><code class="yaml">config:
+    save_in_registry: true # default value: true
+    persistor: [BackBee\Config\Persistor\File, BackBee\Config\Persistor\Registry]
+</code></pre>
+
+<ul>
+<li><code>save_in_registry</code> is a particular option: if true, this means BackBee will try to look for an overidden configuration
+  stored in Registry.</li>
+<li><code>persistor</code> is the list of activated persistors. BackBee will loop on each and try to find configuration. If no one
+  provides the requested configuration, an exception will be thrown.</li>
+</ul>
+<h2 id="configuration-caching">Configuration caching</h2>
+<p>The BackBee Config Component is fully compatible with BackBee Cache component.</p>
+<p>When you create your Config object, you can pass an instance of <code>BackBee\Cache\AbstractCache</code> as a second argument.
+This way, in non-debug mode (fourth argument, <strong>false</strong> by default), the second time you get the information, the configuration
+will be constructed from cache instead of built again from files or database registry.</p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.</center>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../js/backbee.js"></script>
+    </body>
+</html>

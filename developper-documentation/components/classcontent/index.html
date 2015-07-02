@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/components/classcontent/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>ClassContent - The BackBee documentation</title>
+
+        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">The BackBee documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Introduction</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../requirements/">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../installation/">Installation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../architecture/">Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../configuration/">Configuration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbooks <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../cookbooks/create_new_commands/">Create new commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/customize_error_pages/">Customize error pages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../cookbooks/create_bundle_administration/">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../config/">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../security/">Security</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../../cookbooks/create_bundle_administration/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../config/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/backbee/docs">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#components">Components</a></li>
+        
+            <li><a href="#the-classcontent-component">The ClassContent component</a></li>
+        
+            <li><a href="#classcontent-parameters">ClassContent Parameters</a></li>
+        
+            <li><a href="#parameters-reference">Parameters reference</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="components">Components</h1>
+<h2 id="the-classcontent-component">The ClassContent component</h2>
+<h2 id="classcontent-parameters">ClassContent Parameters</h2>
+<p>Parameters allow to configure contents. ClassContent parameters is used usually in the listener but can be used everywhere. ClassContent parameters are contributed in back office by the user with the gearing button of Block.</p>
+<p>Parameters is builded from the block's YAML like</p>
+<pre><code class="yaml">BlockDemo:
+    properties:
+        name: Block demo
+        description: &quot;Block for demonstration purposes&quot;
+        category: [Demo]
+    elements:
+        text:
+            type: BackBee\ClassContent\Element\Text
+    parameters:
+        mytext:
+            label: 'My text'
+            type: 'text'
+            value: ''
+        myselect:
+            label: 'My select'
+            type: 'select'
+            options:
+                'foo': 'Foo'
+                'bar': 'Bar'
+            value: ['foo']
+
+</code></pre>
+
+<h3 id="use-parameters">Use parameters</h3>
+<p>If ClassContent Parameters are not validated by user the content parameters are overriden by revision parameters.
+<strong>Only value of the parameter is saved.</strong></p>
+<p>To get default parameters:</p>
+<pre><code class="php">&lt;?php
+$params = $content-&gt;getDefaultParams();
+
+/** That returns all parameters with definitions and default values:
+ *  array (size=2)
+ *    'mytext' =&gt;
+ *      array (size=3)
+ *        'label' =&gt; string 'My text' (length=7)
+ *        'type' =&gt; string 'text' (length=4)
+ *        'value' =&gt; string '' (length=0)
+ *    'myselect' =&gt;
+ *      array (size=4)
+ *        'label' =&gt; string 'My select' (length=9)
+ *        'type' =&gt; string 'select' (length=6)
+ *        'options' =&gt;
+ *          array (size=2)
+ *            'foo' =&gt; string 'Foo' (length=3)
+ *            'bar' =&gt; string 'Bar' (length=3)string 'yolo' (length=4)
+ *        'value' =&gt;
+ *          array (size=1)
+ *            0 =&gt; string 'foo' (length=3)
+ */
+</code></pre>
+
+<p>To get all parameters :</p>
+<pre><code class="php">&lt;?php
+
+$params = $content-&gt;getAllParams();
+
+/** That returns all parameters with definitions and new values
+ *  array (size=2)
+ *    'mytext' =&gt;
+ *      array (size=3)
+ *        'label' =&gt; string 'My text' (length=7)
+ *        'type' =&gt; string 'text' (length=4)
+ *        'value' =&gt; string '' (length=0)
+ *    'myselect' =&gt;
+ *      array (size=4)
+ *        'label' =&gt; string 'My select' (length=9)
+ *        'type' =&gt; string 'select' (length=6)
+ *        'options' =&gt;
+ *          array (size=2)
+ *            'foo' =&gt; string 'Foo' (length=3)
+ *            'bar' =&gt; string 'Bar' (length=3)
+ *        'value' =&gt;
+ *          array (size=1)
+ *            0 =&gt; string 'foo' (length=3)
+ */
+</code></pre>
+
+<p>To get one param:</p>
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParam('mytext');
+
+/** That returns the definition and new value
+ *  array (size=3)
+ *    'label' =&gt; string 'My text' (length=7)
+ *    'type' =&gt; string 'text' (length=4)
+ *    'value' =&gt; string '' (length=0)
+ */
+</code></pre>
+
+<p>To get the value of the param:</p>
+<pre><code class="php">&lt;?php
+$paramValue = $content-&gt;getParamValue('mytext');
+
+// That returns the new value string '' (length=0)
+</code></pre>
+
+<p>To set a value, you need to set up the same type you declare in the YAML file as value:</p>
+<pre><code class="php">&lt;?php
+$content-&gt;setParam('mytext', 'foo');
+$param = $content-&gt;getParamValue('mytext')
+
+// That returns a new value set  string 'foo' (length=3)
+</code></pre>
+
+<h2 id="parameters-reference">Parameters reference</h2>
+<ul>
+<li>checkbox</li>
+<li>datetimepicker</li>
+<li>hidden</li>
+<li>linkSelector</li>
+<li>mediaSelector</li>
+<li>nodeSelector</li>
+<li>password</li>
+<li>radio</li>
+<li>select</li>
+<li>text</li>
+<li>textarea</li>
+</ul>
+<p>All parameters has default options:</p>
+<h4 id="default-options">Default options</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>label</strong></td>
+<td>String</td>
+<td>Label is displayed above the field</td>
+<td>Empty</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>Mixed</td>
+<td>This field must be set and allows to describe the  parameter's type</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>String</td>
+<td>Key of one of available parameters</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="checkbox">Checkbox</h4>
+<p>Like HTML checkbox attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Array</td>
+<td>List of options (key/value)</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>inline</strong></td>
+<td>Boolean</td>
+<td>Display checkbox inline</td>
+<td>false</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>Array</td>
+<td>List of selected checkboxes</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mycheckbox:
+        type: 'checkbox'
+        options:
+            'foo': 'Foo'
+            'bar': 'Bar'
+        value: ['foo']
+        inline: true
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('mycheckbox'); // sarray('foo')
+</code></pre>
+
+<hr />
+<h4 id="datetime-picker">Datetime picker</h4>
+<p>Text element with a datetimepicker</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>Number</td>
+<td>It is an timestamp value</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mydatetimepicker:
+        type: 'datetimepicker'
+        value: 1435573740
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('mydatetimepicker'); // 1435573740
+</code></pre>
+
+<hr />
+<h4 id="hidden">Hidden</h4>
+<p>Like HTML hidden attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>String</td>
+<td>The default text</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    myhidden:
+        type: 'hidden'
+        value: 'foo'
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('myhidden'); // foo
+</code></pre>
+
+<hr />
+<h4 id="link-selector">Link selector</h4>
+<p>Link selector allows to choose a link from one of your website pages or an external link.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>Json</td>
+<td>Object which contains url / title / pageUid / target</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mylinkselector:
+        type: 'linkSelector'
+        value: []
+</code></pre>
+
+<pre><code class="php">&lt;?php
+# Example with select one link
+$param = $content-&gt;getParamValue('mylinkselector');
+// array('url' =&gt; '/foo', 'title' =&gt; 'Foo', 'pageUid' =&gt; 'anPageUid', 'target' =&gt; '_self')
+</code></pre>
+
+<p><strong> Page tree </strong>:
+We recommend to retrieve the url from the page entity instead of the url attribute because the url can change.</p>
+<p><strong> External link </strong> :
+In this case, note the pageUid attribute is (obviously) null.</p>
+<hr />
+<h4 id="media-selector">Media selector</h4>
+<p>Media selector allow to choose a list of media in the media library.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>Json</td>
+<td>Object which contains folder_uid / image / media_id / title /type / uid</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mymediaselector:
+        type: 'mediaSelector'
+        value: []
+</code></pre>
+
+<pre><code class="php">&lt;?php
+# Example with select one media
+$param = $content-&gt;getParamValue('mymediaselector');
+// array(array('folder_uid' =&gt; 'anFolderUid', 'image' =&gt; 'imageUrl', 'media_id' =&gt; '1', 'title' =&gt; '_Foo', 'type' =&gt; 'Media/Image', 'uid' =&gt; 'anUid'))
+</code></pre>
+
+<hr />
+<h4 id="node-selector">Node selector</h4>
+<p>Node selector allows to choose a page from tree</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>Json</td>
+<td>Object which contains url  pageUid / title</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mynodeselector:
+        type: 'nodeSelector'
+        value: []
+</code></pre>
+
+<pre><code class="php"># Example of node selection
+$param = $content-&gt;getParamValue('mynodeselector');
+# array('pageUid' =&gt; 'anPageUid', 'title' =&gt; 'Foo')
+</code></pre>
+
+<p>We recommend to retrieve the title from the page entity instead of the title attribute because the title can change.</p>
+<hr />
+<h4 id="password">Password</h4>
+<p>Like HTML password attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>String</td>
+<td>The default text</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mypassword:
+        type: 'password'
+        value: 'foo'
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('mypassword'); // foo
+</code></pre>
+
+<hr />
+<h4 id="radio">Radio</h4>
+<p>Like HTML radio attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Array</td>
+<td>List of options (key/value)</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>inline</strong></td>
+<td>Boolean</td>
+<td>Display radio inline</td>
+<td>false</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>Array</td>
+<td>List of selected radio</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    myradio:
+        type: 'radio'
+        options:
+            'foo': 'Foo'
+            'bar': 'Bar'
+        value: ['foo']
+        inline: true
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('myradio'); // array('foo')
+</code></pre>
+
+<hr />
+<h4 id="select">Select</h4>
+<p>Like HTML select attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Array</td>
+<td>List of options (key/value)</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>Array</td>
+<td>List of selected radio</td>
+<td>Empty array</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>multiple</strong></td>
+<td>Boolean</td>
+<td>Allows multiple selection</td>
+<td>false</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mypassword:
+        type: 'select'
+        options:
+            'foo': 'Foo'
+            'bar': 'Bar'
+        value: ['foo']
+        multiple: true
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('myradio'); //array('foo')
+</code></pre>
+
+<hr />
+<h4 id="text">Text</h4>
+<p>Like HTML text attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>String</td>
+<td>The default text</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mytext:
+        type: 'text'
+        value: 'foo'
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('mypassword'); // foo
+</code></pre>
+
+<hr />
+<h4 id="textarea">Textarea</h4>
+<p>Like HTML textearea attribute</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>String</td>
+<td>The default text</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>rows</strong></td>
+<td>String</td>
+<td>the rows html attribute</td>
+<td>5</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<pre><code class="yaml">parameters:
+    mytextearea:
+        type: 'textarea'
+        value: 'BackBee'
+        rows: 10
+</code></pre>
+
+<pre><code class="php">&lt;?php
+$param = $content-&gt;getParamValue('mytextearea'); // BackBee
+</code></pre>
+
+<hr />
+<h3 id="special-parameters">Special parameters</h3>
+<h4 id="rendermode">Rendermode</h4>
+<p>Rendermode parameters allow to list automatically rendermodes of the content and use them directly.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>value</strong></td>
+<td>Array</td>
+<td>Selected rendermode</td>
+<td>Empty</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="yaml">parameters:
+    rendermode:
+        type: 'select'
+        value: []
+</code></pre>
+
+<p><strong>The key must be 'rendermode'</strong></p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.</center>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../js/backbee.js"></script>
+    </body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://www.backbee.com/developper-documentation/cookbooks/create_bundle_administration/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Create bundle administration - The BackBee documentation</title>
+
+        <link href="../../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">The BackBee documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../..">Introduction</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developper documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../requirements/">Requirements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../installation/">Installation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../architecture/">Architecture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../configuration/">Configuration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbooks <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../create_new_commands/">Create new commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../customize_error_pages/">Customize error pages</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../use_swift_mailer_in_backbee/">Use Swift Mailer in BackBee</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Create bundle administration</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../components/classcontent/">ClassContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../components/config/">Config</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../components/event_listener/">Event Listener</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../components/routing/">Routing</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../components/security/">Security</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../use_swift_mailer_in_backbee/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../components/classcontent/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/backbee/docs">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#cookbooks">CookBooks</a></li>
+        
+            <li><a href="#create-bundle-administration">Create bundle administration</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="cookbooks">CookBooks</h1>
+<h2 id="create-bundle-administration">Create bundle administration</h2>
+<h3 id="configuration">Configuration :</h3>
+<p>To create an bundle administration we need to declare some parameters into the bundle configuration. Then open your config file into <code>Config/config.yml</code></p>
+<p>Define your controller</p>
+<pre><code class="yml">bundle:
+  ...
+  admin_controller:
+    doc: BackBee\Bundle\DocumentationBundle\Controller\DocController
+</code></pre>
+
+<blockquote>
+<p>You can declare controller as much as you want.</p>
+</blockquote>
+<pre><code class="yml">bundle:
+  ...
+  admin_controller:
+    first: BackBee\Bundle\DocumentationBundle\Controller\FirstController
+    second: BackBee\Bundle\DocumentationBundle\Controller\SecondController
+    ...
+</code></pre>
+
+<p>And to finish we need to define the entry point of your admin interface.</p>
+<pre><code class="yml">bundle:
+  ...
+  admin_entry_point: doc.index
+</code></pre>
+
+<blockquote>
+<p>The entry point it's compose by controller name that refer the name you declare in <code>admin_controller</code> section, dot separator and action name without the Action key word index refer to <code>indexAction</code>.</p>
+</blockquote>
+<h3 id="controller-and-actions">Controller and Actions</h3>
+<p>Your admin controller class have to extend <code>AbstractAdminBundleController</code> to work correctly in automated mode.</p>
+<pre><code class="php">&lt;?php
+namespace BackBee\Bundle\DocumentationBundle\Controller;
+use BackBee\Bundle\AbstractAdminBundleController;
+
+class DocController extends AbstractAdminBundleController
+{
+}
+</code></pre>
+
+<blockquote>
+<p>This represent the minimum necessary to implement your admin controller.</p>
+</blockquote>
+<p>By extending <code>AbstractAdminBundleController</code> your controller can access to lot of methods:</p>
+<ul>
+<li><code>getApplication()</code> Returns current application</li>
+<li><code>getContainer()</code>Returns the dependency injection container</li>
+<li><code>getRequest()</code> Returns current request</li>
+<li><code>getEntityManager()</code> Returns doctrine entity manager</li>
+<li><code>getRepository($entity)</code> Returns the repository corresponding of the entity name passed in paramater</li>
+<li><code>isGranted($permission, $object)</code> Returns true if the current user have the permission to do the action on the object</li>
+<li><code>getTranslator()</code> Returns translator object</li>
+<li><code>render($template, $parameters)</code> Returns template parsed and rendered first argument is the template file starting from your rendering folder and $parameters are the variables necessary to render the template.</li>
+<li><code>createResponse($content, $statusCode, $contentType)</code> Generate your own response, $content parameter is the body of the response, $statusCode correspond to the</li>
+<li><code>redirect($url, $statusCode)</code> Create a redirection response</li>
+<li><code>notifyUser($type, $message)</code> Generate an notification on the backoffice to the user there is 3 types availble <code>self::NOTIFY_SUCCESS</code> (green), <code>self::NOTIFY_WARNING</code> (orange) and <code>self::NOTIFY_ERROR</code> (red).</li>
+</ul>
+<p>Now you have to implement some actions in your controller by default an action have to return an <code>String</code>, before we have defined that the entry point of the bundle administration it was do in the <code>indexAction</code>.
+The index action return an array of values and need no parameters to work, <code>indexAction</code> it's compose of an <code>findAll</code> and one <code>render</code></p>
+<pre><code class="php">public function indexAction()
+{
+    $docs = $this-&gt;getRepository('BackBee\Bundle\DocumentationBundle\Entity\Item')-&gt;findAll();
+
+    return $this-&gt;render('Doc/Index.twig', ['docs' =&gt; $docs]);
+}
+</code></pre>
+
+<p>To consult one object doc in particular we need an showAction. This action need an identifier to retrieve the good object and render it.</p>
+<pre><code class="php">public function showAction($id)
+{
+    $doc = $this-&gt;getRepository('BackBee\Bundle\DocumentationBundle\Entity\Item')-&gt;find($id);
+
+    return $this-&gt;render('Doc/Doc.twig', ['doc' =&gt; $doc]);
+}
+</code></pre>
+
+<h3 id="routing">Routing</h3>
+<p>By default on all application, you to expose some route and do the matching with an controller and an action. In the bundle administration the routing is dynamic and automatic. To generate the URL you have 3 helpers to render the URL into your template.
+Implicit route are defined like this: <code>Route is composed by the bundle name, controller name and action name separated by a dot</code>.</p>
+<blockquote>
+<p>In the case of the method <code>showAction</code> from <code>DocController</code> into <code>DocumentationBundle</code> the route is equal to <code>documentation.doc.show</code>. <code>documentation</code> matches to the name declared into <code>bundle.yml</code> file in your global configuration and <code>doc</code> is the name you gave to your controller into admin_controller section of your <code>config.yml</code> into your bundle configuration file.</p>
+</blockquote>
+<ul>
+<li><code>bundleAdminUrl($route, $parameters)</code> this helper generate your URL it need a "route" and optionally parameters.</li>
+<li><code>bundleAdminLink($route, $parameters, $httpMethod)</code> this helper generate all value necessary to an automated system, it work like the previous helper, but accept an third parameter to specify the HTTP method you want use when the link was cliqued. By default the HTTP method is GET.</li>
+<li><code>bundleAdminForm($route, $parameters, $httpMethod)</code> work like <code>bundleAdminLink</code> but by default the HTTP method is POST.</li>
+</ul>
+<blockquote>
+<p><code>bundleAdminLink</code>  <code>bundleAdminForm</code> generate more than just an URL and it need to be goodly used.</p>
+<p><code>bundleAdminUrl</code> is required only if you want create an custom system and bypass the automated system.</p>
+</blockquote>
+<p>Usage of the <code>bundleAdminLink</code> into an template to reach the <code>showAction</code></p>
+<pre><code class="twig">&lt;a {{ this.bundleAdminLink(&quot;documentation.doc.show&quot;, {'id': 1})|raw }}&gt;
+    Show the first document
+&lt;/a&gt;
+</code></pre>
+
+<p>And the result before rendering is:</p>
+<pre><code class="html">&lt;a data-bundle=&quot;link&quot; href=&quot;/bundle/documentation/doc/show/1&quot; data-http-method=&quot;read&quot;&gt;
+   Show the first document
+&lt;/a&gt;
+</code></pre>
+
+<blockquote>
+<p>As you can see the id 1 do part of the URL and is not present as query. This is because your <code>showAction</code> method require an $id to work and the helper do automatically the matching behind the action and your parameters.</p>
+<p>In the case of <code>bundleAdminForm</code>, this helper work correctly only in <code>form</code> HTML tag.</p>
+</blockquote></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.</center>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../js/backbee.js"></script>
+    </body>
+</html>
