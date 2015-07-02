@@ -8,7 +8,7 @@ still valid.
 
 ## How the Routing component work ?
 
-To set a basing routing system, you need at least to set and configure three objects:
+To set a basic routing system, you need at least to set and configure three objects:
 
 * A ``BackBee\Routing\RouteCollection`` instance, which contains routes definitions (instance of ``BackBee\Routing\Route``);
 * A ``BackBee\Routing\RequestContext`` instance, which embed the current request;
@@ -22,7 +22,7 @@ The ``route.yml`` is parsed by the Yaml component and BackBee create a ``RouteCo
 
 In this file, you can find all the routes (and so on, paths) from the actual REST API used to communicate with the Javascript client when you are logged to BackBee Standard Edition.
 
-Also, some routes are defined to handle some resources and finaly the more important route is the default route.
+Also, some routes are defined to handle some resources and finaly the most important route is the default route.
 
 Let's take an example:
 
@@ -64,4 +64,4 @@ The ``condition`` requirement can use the Symfony Expression Language component 
 * ``context``: the instance of RequestContext;
 * ``request``: the instance of the actual Request;
 
-If you are interested by this component, you can take a look to the official [Expression Language](http://symfony.com/doc/current/components/expression_language/index.html) documentation.
+If you are interested in this component, you can take a look to the official [Expression Language](http://symfony.com/doc/current/components/expression_language/index.html) documentation.
