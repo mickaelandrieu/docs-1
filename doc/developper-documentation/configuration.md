@@ -2,19 +2,19 @@
 
 ## Configuration
 
-BackBee CMS is powerful but highly configurable.
+BackBee CMS is powerful and highly configurable.
 In this section, all the available configurations are broken down by the key (e.g. doctrine) that defines each possible section of your application configuration.
 
 ### Bootstrap configuration (bootstrap.yml)
 
-This configuration file have only two responsabilities:
+This configuration file has only two functions:
 
 * ``debug``: set the developper mode: if **true**, the container is generated at each request.
 * ``container``: set the container configuration which have 2 parameters
     * ``dump_directory``: set the location of the generated container.
     * ``autogenerate``: if true, the container is generated at each request.
 
-The ``autogenerate`` option is useful when you want to force the generation of the container in "production": don't forget this option have a performance cost.
+The ``autogenerate`` option is useful when you want to force the generation of the container in "production". Don't forget this option has a performance cost.
 
 ### Bundles configuration (bundles.yml)
 
@@ -29,7 +29,7 @@ toolbar: BackBee\Bundle\ToolbarBundle\Toolbar
 
 ### Database configuration (doctrine.yml)
 
-We provide a demo sample configuration, you can see all available parameters into the related [Doctrine configuration of Symfony](http://symfony.com/doc/current/reference/configuration/doctrine.html):
+We provide a demo sample configuration. You can see all available parameters into the related [Doctrine configuration of Symfony](http://symfony.com/doc/current/reference/configuration/doctrine.html):
 
 ```yaml
 # /repository/Config/doctrine.yml
@@ -59,7 +59,7 @@ orm:
 
 ### SEO Configuration (metadata.yml)
 
-This is where you set the HTML meta headers you want to configure for each page of BackBee:
+This is where you set up the HTML meta headers you want to configure for each page of BackBee:
 
 ```yaml
 # /repository/Config/metadata.yml
@@ -80,13 +80,13 @@ robots:
 
 ```
 
-This configuration have a real impact in the toolbar, see the generated SEO form in Page context mode:
+This configuration has a real impact on the toolbar, see the generated SEO form in Page context mode:
 
 ![SEO form option of BackBee page](http://i.imgur.com/hpUmrob.png)
 
 ### Security Configuration (security.yml)
 
-You can configure firewalls and suoders inside this file, a sudoer is a super administrator:
+You can set up firewalls and sudoers inside this file. A sudoer is a super administrator:
 
 ```yaml
 # /repository/Config/security.yml

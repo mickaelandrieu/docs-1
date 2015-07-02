@@ -5,7 +5,7 @@
 
 ## ClassContent Parameters
 
-Parameters allow to configure your content easily, he is used usually in the listener but can be used everywhere. Parameters is contributed on front by the user with the gearing button of block.
+Parameters allow to configure contents. ClassContent parameters is used usually in the listener but can be used everywhere. ClassContent parameters are contributed in back office by the user with the gearing button of Block.
 
 Parameters is builded from the block's YAML like
 
@@ -35,15 +35,15 @@ BlockDemo:
 
 ### Use parameters
 
-If parameters is not validated by user the content parameters is overrided by revision parameters.
+If ClassContent Parameters are not validated by user the content parameters are overriden by revision parameters.
 **Only value of the parameter is saved.**
 
-For get default parameters:
+To get default parameters:
 ```php
 <?php
 $params = $content->getDefaultParams();
 
-/** That return all parameters with definitions and default values:
+/** That returns all parameters with definitions and default values:
  *  array (size=2)
  *    'mytext' =>
  *      array (size=3)
@@ -64,13 +64,13 @@ $params = $content->getDefaultParams();
  */
 ```
 
-For get all parameters :
+To get all parameters :
 ```php
 <?php
 
 $params = $content->getAllParams();
 
-/** That return all parameters with definitions and new values
+/** That returns all parameters with definitions and new values
  *  array (size=2)
  *    'mytext' =>
  *      array (size=3)
@@ -91,13 +91,13 @@ $params = $content->getAllParams();
  */
 ```
 
-For get one param:
+To get one param:
 
 ```php
 <?php
 $param = $content->getParam('mytext');
 
-/** That return the definition and new value
+/** That returns the definition and new value
  *  array (size=3)
  *    'label' => string 'My text' (length=7)
  *    'type' => string 'text' (length=4)
@@ -105,21 +105,21 @@ $param = $content->getParam('mytext');
  */
 ```
 
-For get the value of the param:
+To get the value of the param:
 ```php
 <?php
 $paramValue = $content->getParamValue('mytext');
 
-// That return the new value string '' (length=0)
+// That returns the new value string '' (length=0)
 ```
 
-For set a value, you need to set a same type which you declare in YAML file as value:
+To set a value, you need to set up the same type you declare in the YAML file as value:
 ```php
 <?php
 $content->setParam('mytext', 'foo');
 $param = $content->getParamValue('mytext')
 
-// That return a new value set  string 'foo' (length=3)
+// That returns a new value set  string 'foo' (length=3)
 ```
 
 ## Parameters reference
@@ -142,8 +142,8 @@ All parameters has default options:
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---
-**label** |  String | Label is display above the field | Empty | No
-**value** | Mixed | This field must be set and allow to describe type of the  parameter | None | Yes |
+**label** |  String | Label is displayed above the field | Empty | No
+**value** | Mixed | This field must be set and allows to describe the  parameter's type | None | Yes |
 **type** | String | Key of one of available parameters | None | Yes |
 
 ***
@@ -179,7 +179,7 @@ $param = $content->getParamValue('mycheckbox'); // sarray('foo')
 
 #### Datetime picker
 
-Element text with a datetimepicker
+Text element with a datetimepicker
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---
@@ -196,7 +196,7 @@ parameters:
 
 ```php
 <?php
-$param = $content->getParamValue('mydatetimepicker'); //return 1435573740
+$param = $content->getParamValue('mydatetimepicker'); // 1435573740
 ```
 
 ***
@@ -227,7 +227,7 @@ $param = $content->getParamValue('myhidden'); // foo
 
 #### Link selector
 
-Link selector allow to choose a link from tree page or external link.
+Link selector allows to choose a link from one of your website pages or an external link.
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---
@@ -249,7 +249,7 @@ $param = $content->getParamValue('mylinkselector');
 // array('url' => '/foo', 'title' => 'Foo', 'pageUid' => 'anPageUid', 'target' => '_self')
 ```
 ** Page tree **:
-We recommend to retrieve the url from the page entity instead of the url attribute cause the url can change.
+We recommend to retrieve the url from the page entity instead of the url attribute because the url can change.
 
 ** External link ** :
 In this case, note the pageUid attribute is (obviously) null.
@@ -258,7 +258,7 @@ In this case, note the pageUid attribute is (obviously) null.
 
 #### Media selector
 
-Media selector allow to choose a list of media from the media library.
+Media selector allow to choose a list of media in the media library.
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---
@@ -284,7 +284,7 @@ $param = $content->getParamValue('mymediaselector');
 
 #### Node selector
 
-Node selector allow to choose a page from tree
+Node selector allows to choose a page from tree
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---
@@ -300,11 +300,11 @@ parameters:
 ```
 
 ```php
-# Example with select one node
+# Example of node selection
 $param = $content->getParamValue('mynodeselector');
 # array('pageUid' => 'anPageUid', 'title' => 'Foo')
 ```
-We recommend to retrieve the title from the page entity instead of the title attribute cause the title can change.
+We recommend to retrieve the title from the page entity instead of the title attribute because the title can change.
 
 ***
 
@@ -368,7 +368,7 @@ Like HTML select attribute
 --- | --- | --- | --- | ---
 **options** |  Array | List of options (key/value) | Empty array | Yes
 **value** | Array | List of selected radio | Empty array | Yes |
-**multiple** | Boolean | Allow to multiple selection | false | No
+**multiple** | Boolean | Allows multiple selection | false | No
 
 **Example**:
 
@@ -442,7 +442,7 @@ $param = $content->getParamValue('mytextearea'); // BackBee
 
 #### Rendermode
 
-Rendermode parameters allow to list automatically rendermodes of the content and use it directly.
+Rendermode parameters allow to list automatically rendermodes of the content and use them directly.
 
  |   | Type | Description | Default | Mandatory
 --- | --- | --- | --- | ---

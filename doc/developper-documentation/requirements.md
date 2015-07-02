@@ -2,20 +2,20 @@
 
 ## Requirements for running BackBee CMS
 
-To run BackBee CMS, your system needs to adhere to a list of requirements.
+To run BackBee CMS, your system needs to fulfill to a list of requirements.
 
-Below is the list of required and optional requirements.
+Here you will find the list of required and optional requirements.
 
 ### Required
 
-Because BackBee CMS is built on top of Symfony components, theses requirements are required.
+Because BackBee CMS is built on top of Symfony components, theses elements are required.
 
 * ``JSON`` needs to be enabled
 * ``ctype`` needs to be enabled
 * ``mbstring`` needs to be enabled
 * Your php configuration needs to have the date.timezone setting completed
 
-More, PHP needs to be a minimum version of **PHP 5.4.0**.
+The mibimum version of PHP must be: **PHP 5.4.0**.
 
 ### Optional
 
@@ -41,5 +41,5 @@ session.auto_start = Off
 
 ### Doctrine2 (Database management)
 
-Because we depend on Doctrine 2, you will need to have PDO installed. Additionally, you need to have the PDO driver installed for the database server you want to use.
+Because we depend on Doctrine 2, you will need to have PDO installed. Additionally, you need to have the PDO driver installed to use your database server.
 Also, you need ``php5-sqlite`` extension to be installed and enabled during the installation process.

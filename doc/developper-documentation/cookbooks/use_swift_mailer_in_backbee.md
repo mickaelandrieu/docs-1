@@ -4,20 +4,21 @@
 
 ### Introduction
 
-In BackBee there isn't an dedicated component for mailing, we actually use Swift Mailer library. BackBee provide only a way to configure it and easily get initialized instance.
+In BackBee there is no home made component for mailing. We actually use Swift Mailer library.
+BackBee only provides a way to configure it and get your instance initialized easily.
 
 ## Configuration
 
 To configure Swift Mailer in BackBee you need to create mailer.yml into your global configuration folder `repository/Config`.
 
-The minimal configuration file is compose of an smtp and port
+The minimal configuration file is composed of an SMTP and  a port
 
 ```yml
 smtp: localhost
 port: 25
 ```
 
-But in production generally we need to use an secured smtp, for that more configuration parameters is requiered.
+You can also set up more parameters for more security on SMTP.
 
 ```yml
 smtp: localhost
@@ -26,12 +27,11 @@ username: mailer_user_identifier
 password: superSecretPassword
 ```
 
-Them it's all for the configuration part.
-
 ### Basic usage example
 
-To retrieve the configured mailer you need an access to your Application, this on can be new, but for performances matter prefer use the current Application.
-The example will be place in the context of an EventListener. This in not good practice to place your business logic into an EventListener but it is more easy to understand.
+To retrieve the configured mailer you need an access to your Application.
+You can start with a new app, but for performances matters prefer use the current Application.
+The example will be placed in the context of an EventListener. *This is not a good practice to place your business logic into an EventListener* but it is easier to understand.
 
 ```php
 <?php
@@ -94,4 +94,4 @@ class MailerListener
 }
 ```
 
-If you want do more stuff with Swift Mailer, you can find an complete doc on [Swift Mailer web site](http://swiftmailer.org/)
+If you want do more with Swift Mailer, you can find additional documentation on [Swift Mailer web site](http://swiftmailer.org/)
