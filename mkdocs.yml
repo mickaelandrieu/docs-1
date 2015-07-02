@@ -17,10 +17,11 @@ pages:
         - 'Architecture': 'developper-documentation/architecture.md'
         - 'Configuration': 'developper-documentation/configuration.md'
     - 'Cookbooks':
+        - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
+        - 'Ease debugging with the Web Profiler': 'developper-documentation/cookbooks/ease_debugging_with_profiler.md'
         - 'Use Swift Mailer in BackBee': 'developper-documentation/cookbooks/use_swift_mailer_in_backbee.md'
-        - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
     - 'Components':
         - 'ClassContent': 'developper-documentation/components/classcontent.md'
         - 'Config': 'developper-documentation/components/config.md'
