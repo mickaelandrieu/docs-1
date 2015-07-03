@@ -28,6 +28,7 @@ pages:
         - 'Requirements': 'developper-documentation/requirements.md'
         - 'Architecture': 'developper-documentation/architecture.md'
         - 'Configuration': 'developper-documentation/configuration.md'
+        - 'Project Architecture': 'developper-documentation/project_architecture.md'
         - **'New page': 'new_page.md'**
     - 'Cookbooks':
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'

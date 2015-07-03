@@ -16,6 +16,7 @@ pages:
         - 'Installation': 'developper-documentation/installation.md'
         - 'Architecture': 'developper-documentation/architecture.md'
         - 'Configuration': 'developper-documentation/configuration.md'
+        - 'Project Architecture': 'developper-documentation/project_architecture.md'
     - 'Cookbooks':
         - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
         - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
