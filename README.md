@@ -42,6 +42,7 @@ pages:
         - 'Routing': 'developper-documentation/components/routing.md'
         - 'Security': 'developper-documentation/components/security.md'
         - 'Translation': 'developper-documentation/components/translation.md'
+        - 'Nested Node': 'developper-documentation/components/nested_node.md'
 ```
 
 **Mkdocs** can manage only 1 level of subpage, this configuration:
