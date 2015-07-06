@@ -29,9 +29,9 @@ pages:
         - 'ClassContent': 'developper-documentation/components/classcontent.md'
         - 'Config': 'developper-documentation/components/config.md'
         - 'Event Listener': 'developper-documentation/components/event_listener.md'
+        - 'Nested Node': 'developper-documentation/components/nested_node.md'
         - 'Routing': 'developper-documentation/components/routing.md'
         - 'Security': 'developper-documentation/components/security.md'
         - 'Translation': 'developper-documentation/components/translation.md'
-        - 'Nested Node': 'developper-documentation/components/nested_node.md'
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
