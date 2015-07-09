@@ -7,35 +7,35 @@ It provides a ``Renderer`` object able to:
 
 * Search for templates according to available adapters;
 * Render BackBee ``Page`` but also any ``ClassContent``;
-* Accept multiples rendering modes for each content to be rendered;
+* Accept multiple rendering modes for each content to be rendered;
 * Can Render only an HTML fragment;
 * Manage Web assets (CSS and Javascripts).
 
 ## The Big picture
 
-Let's start with a schema which represent the BackBee architecture of a simple page:
+Let's start with a schema that represents the BackBee architecture on a simple page:
 
 ![the BackBee big picture](http://i.imgur.com/sLLJ19x.png "the BackBee big picture")
 
-Each element have his object representation inside **BackBee core library**:
+Each element have has an objective representation inside **BackBee core library**:
 
  - **Site** (``BackBuilder\Site\Site``) is your application.
  - **Page** (``BackBuilder\NestedNode\Page``) represent each page of your application, for example BackBee CMS provide three pages: home page, article page and category page.
  - **Layout** (``BackBuilder\Site\Layout``) represent the layout of a page.
- - **ContentSet** (``BackBuilder\ClassContent\ContentSet``) represent the blocks/columns of layouts, which can be editables by user.
+ - **ContentSet** (``BackBuilder\ClassContent\ContentSet``) represent the blocks/columns of layouts, which can be edited by user.
 
-When an user access to a page, the ``Renderer::render()`` method is called.
+When an user accesses to a page, the ``Renderer::render()`` method is called.
 
-> During the process of rendering, three events are dispatched: ``prerender``, ``render`` and ``postrender``.
+> During the rendereing process, three events are dispatched: ``prerender``, ``render`` and ``postrender``.
 
 ## Renderer adapters and manageable extensions
 
-The BackBee Renderer Component is able to render differents templating engine thanks to Adapters.
+The BackBee Renderer Component is able to render different templating engines thanks to Adapters.
 In BackBee Standard Edition, two adapters are provided:
 * The ``PHTML`` Adapter
 * The ``Twig`` Adapter
 
-When BackBee try to render a content, it look for a template and then it loof for the extension of this file.
+When BackBee tries to render content, it looks for a template and then it looks for the file extension.
 If the extension file is part of the manageable extensions and if an Adapter is found for this extension, the Adapter is called to render the template with the assigned variables.
 
 To implement your own adapter, for [Smarty](http://www.smarty.net/) you need to implement the ``BackBee\Renderer\RendererAdapterInterface`` interface.
@@ -142,12 +142,12 @@ interface RendererAdapterInterface
 
 ```
 
-An adapter can also extends ``BackBee\Renderer\AbstractRendererAdapter`` to help you only focus on templating engine specificities you want to support.
+An adapter can also extend ``BackBee\Renderer\AbstractRendererAdapter`` to help you focus only on templating engine specificities you want to support.
 
 
 ## Render a Page / ClassContent
 
-The rendering of a Page or a ClassContent starts in the ``Renderer::render()`` method:
+Rendering a Page or a ClassContent starts in the ``Renderer::render()`` method:
 
 ```
 <?php
@@ -164,13 +164,13 @@ public function render(
 
 If the object is an instance of ``BackBee\Site\Page``, the function ``renderPage`` is called inside ``render()`` function.
 
-* This method load the Layout of the Page object and then loop into all the ContentSets objects, and for each ContentSet loop into all the ClassContents and try to render them.
+* This method loads the Page Layout object and then loops into all the ContentSet objects, and for each ContentSet loop into all the ClassContents and try to render them.
 
-* Finaly, it use the template related to the layout through the method ``renderTemplate`` which call the the selected ``Adapter::renderTemplate()`` function.
+* Finaly, it uses the template related to the layout through the method ``renderTemplate`` which calls the selected ``Adapter::renderTemplate()`` function.
 
 Else, if the object is not a Page instance, the function ``renderContent()`` is directly called.
 
-*If the object is null or don't implements ``RenderableInterface`` interface, the Renderer don't return an exception but nothing.*
+*If the object is nil or doesn't implement ``RenderableInterface`` interface, the Renderer doesn't return an exception but nothing.*
 
 
 ## Partial rendering
@@ -200,21 +200,22 @@ To call a partial in your template, the file need to be in ``repository/Template
 </html>
 ```
 
-> If you use a partial, you can use the helpers to inject the styles and the javascripts because they are not called for inside the partials.
+> If you use a partial, you can use the helpers to inject the styles and the javascripts because they are not called inside the partials.
 
-## Assets management
+## Asset management
 
-In addition, the BackBee Renderer Component provide nice helpers to help you add assets dynamicaly.
+In addition, the BackBee Renderer Component provides nice helpers to help you add assets dynamicaly.
 
-BackBee help you add any resource available in your application, here a list of availables helpers:
+BackBee helps you add any resource available in your application, here is a list of available helpers:
+
 * ``getImageUrl``, ``getMediaUrl`` and ``getResourceUrl`` : get any file from any **Resource** folder (both in application and bundles);
 * ``getUri`` : get any file from the ``public`` folder of an BackBee application;
-* ``addStylesheet``, ``addHeaderJs`` and ``addFooterJs`` allow you to generate the correct CSS or Javascript call. For the Javascript files you can choice to import the Javascript in the ``<header>`` or in the bottom of the ``<body>``;
-* ``getUrlByRouteName`` is another helper to to manage urls of an application.
+* ``addStylesheet``, ``addHeaderJs`` and ``addFooterJs`` allowing you to generate the correct CSS or Javascript call. For the Javascript files you can choose to import Javascript in the ``<header>`` or in the bottom of the ``<body>``;
+* ``getUrlByRouteName`` is another helper to manage urls of an application.
 
 ## Global variables
 
-The BackBee Renderer Component embed some useful variables in each template from the BackBee application.
+The BackBee Renderer Component embeds some useful variables in each template from the BackBee application.
 
 ```php
 <?php
@@ -257,11 +258,11 @@ This way, in template you can do:
 
 In BackBee Standard application you also have access to specific helpers:
 
-* ``bbtoolbar()`` : display the toolbar application. *You need to have an element with the CSS identifier **bb5-site-wrapper** else the application may have design bad behaviors*.
-* ``navbar()`` : display a menu for all pages which have the option "display in the menus" activated.
-* ``container()`` allow you to loop into the contentset of your layout and then, design your page.
+* ``bbtoolbar()`` : display the toolbar application. *You need to have an element with the CSS identifier **bb5-site-wrapper** or else the application has bad design behaviors*.
+* ``navbar()`` : display a menu for all pages which has the "display in the menus" option activated.
+* ``container()`` allows you to loop into the contentset of your layout and then, design your page.
 
-As a complete example, you can take a look to the *Article* layout:
+As a complete example, you can take a look at the *Article* layout:
 
 ```twig
 <!DOCTYPE html>
