@@ -59,7 +59,9 @@ You also need to define your super admin user, fill the credentials then save an
 
 BackBee Installer creates and populates the database, fill the last fields to complete the installation process: the **site_name** and the **domain**.
 
-![BackBee Installer - step 4](http://i.imgur.com/kk4xNPw.png "BackBee Installer - step 4")
+You can also check the option "Create demonstration website" if you want to install a complete demonstration based on a press website, see http://early.backbee.com/.
+
+![BackBee Installer - step 4](http://i.imgur.com/BcZ3RNA.png "BackBee Installer - step 4")
 
 Installation is now completed: BackBee gives you the ``Apache`` or ``Nginx`` configuration you have to set up to be able to use BackBee on the chosen domain.
 
