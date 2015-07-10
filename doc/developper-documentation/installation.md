@@ -59,7 +59,7 @@ You also need to define your super admin user, fill the credentials then save an
 
 BackBee Installer creates and populates the database, fill the last fields to complete the installation process: the **site_name** and the **domain**.
 
-You can also check the option "Create demonstration website" if you want to install a complete demonstration based on a press website, see http://early.backbee.com/.
+You can also check the option "Create demonstration website" if you want to install a complete demonstration based on a press website, see [The MAG](http://early.backbee.com/).
 
 ![BackBee Installer - step 4](http://i.imgur.com/BcZ3RNA.png "BackBee Installer - step 4")
 
