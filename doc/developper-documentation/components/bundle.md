@@ -1,7 +1,6 @@
 # Components
 
-## The Bundle component
-
+## The Bundle Component
 
 ## What is a bundle?
 In BackBee, a bundle is like an BackBee's core application (``BackBee\BBApplication``). It can bring its ``class contents``, ``configurations``, ``listeners``, ``events``, ``templates``, ``controllers``, etc. It's surely even more flexible cause you can use bundle loader recipes to change the way things should be loaded. We will talk about this point later.

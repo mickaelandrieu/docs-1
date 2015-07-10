@@ -1,6 +1,6 @@
 # Component
 
-## ClassContent Component
+## The ClassContent Component
 
 ### What is it a ClassContent?
 
@@ -265,7 +265,7 @@ There is lots of advantages to extending an other class content. First you do no
 
 #### Listen a ClassContent
 
-Add an event listener on a class content is pretty easy and you will find more information in the [Event Listener component](/developper-documentation/components/event_listener.md).
+Add an event listener on a class content is pretty easy and you will find more information in the [Event Listener component](/developper-documentation/components/event_listener/).
 
 To summarize each ClassContent have 5 events attach:
 - prerender

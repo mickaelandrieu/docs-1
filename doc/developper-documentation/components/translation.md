@@ -1,6 +1,6 @@
 # Components
 
-## The Translation component
+## The Translation Component
 
 This component is used in BackBee to translate text into differents languages. Note this component is an extension of [Symfony Translation Component](http://symfony.com/doc/current/components/translation/index.html)
 

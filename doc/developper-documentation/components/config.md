@@ -1,6 +1,6 @@
 # Components
 
-## The Config component
+## The Config Component
 
 This component is used in BackBee to set parameters from YAML files into the Container.
 
