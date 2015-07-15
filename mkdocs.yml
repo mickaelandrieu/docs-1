@@ -36,3 +36,4 @@ pages:
         - 'Translation': 'developper-documentation/components/translation.md'
 
 copyright: Copyright &copy; 2014-2015, <a href="http://www.backbee.com">BackBee project</a>.
+google_analytics: ['UA-3459992-27', 'docs.backbee.com']
