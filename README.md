@@ -35,6 +35,7 @@ pages:
         - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
         - 'Use Swift Mailer in BackBee': 'developper-documentation/cookbooks/use_swift_mailer_in_backbee.md'
         - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
+        - 'Layout creation using LayoutBuilderBundle': 'developper-documentation/cookbooks/layout_creation.md'
     - 'Components':
         - 'ClassContent': 'developper-documentation/components/classcontent.md'
         - 'Config': 'developper-documentation/components/config.md'
