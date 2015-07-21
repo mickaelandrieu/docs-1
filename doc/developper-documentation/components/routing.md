@@ -1,6 +1,6 @@
 # Components
 
-## The Routing component
+## The Routing Component
 
 This component is used in BackBee to map an HTTP request to a set of configuration variables.
 Note this component is an extension of [Symfony Routing Component](http://symfony.com/doc/current/components/routing/introduction.html), so the official documentation is

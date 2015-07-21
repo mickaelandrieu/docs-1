@@ -1,6 +1,6 @@
 # Component
 
-## NestedNode component
+## The NestedNode Component
 
 ### What is it
 

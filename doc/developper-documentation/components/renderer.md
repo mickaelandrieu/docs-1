@@ -1,6 +1,6 @@
 # Components
 
-## The Renderer component
+## The Renderer Component
 
 The Renderer component is used to render any content from BackBee core.
 It provides a ``Renderer`` object able to:

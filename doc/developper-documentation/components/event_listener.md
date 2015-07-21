@@ -1,6 +1,6 @@
 # Components
 
-## The Event Listener component
+## The Event Listener Component
 
 *Events* are a common and effective way to tie together loosely coupled components in an application.
 An event is generally used to broadcast a change that has occured during a process. If a `component` is

@@ -1,6 +1,6 @@
 # Components
 
-## The Security component
+## The Security Component
 
 `BackBee` Security component is based on the Security Component of `Symfony`.
 

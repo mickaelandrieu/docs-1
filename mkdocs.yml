@@ -26,6 +26,7 @@ pages:
         - 'Use Swift Mailer in BackBee': 'developper-documentation/cookbooks/use_swift_mailer_in_backbee.md'
     - 'Components':
         - 'Bundle': 'developper-documentation/components/bundle.md'
+        - 'Cache': 'developper-documentation/components/cache.md'
         - 'ClassContent': 'developper-documentation/components/classcontent.md'
         - 'Config': 'developper-documentation/components/config.md'
         - 'Event Listener': 'developper-documentation/components/event_listener.md'
