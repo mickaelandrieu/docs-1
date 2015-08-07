@@ -4,7 +4,7 @@
 
 BackBee is an open source Content Management System (CMS) with one major advantage. BackBee uses On-page Editing Technology (OET) which means you can easily create and manage websites as they appear with no prior technical knowledge.
 
-**What is an Open-page Editing Site?**
+**What is an On-page Editing Site?**
 
 On-page Editing Technology (OET) is the natural evolution of your usual Content Management System functionalities. On-page Editing Technology is a tool that allows you to enter, edit and manage your website directly as it appears to users: The back office and front office are merged.
 
