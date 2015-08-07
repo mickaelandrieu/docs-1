@@ -53,6 +53,8 @@ The ``Config/config.yml`` is also required. It will be parsed to get an instance
 ```yaml
 # NEWSLETTER_BUNDLE_ROOT_FOLDER/Config/config.yml
 bundle:
+    name: NewsLetterBundle
+    description: This is a plugin that provide newsletters integration in BackBee
     enable: true # define if the bundle should be load; default: true
     config_per_site: false # allows you to have different configuration per site; default: false
     category: [] # your bundle can belong to none, one or many categories; default: none
