@@ -24,26 +24,26 @@ For instance:
 # mkdocs.yml
 pages:
     - Introduction: 'index.md'
-    - Developper documentation:
-        - 'Requirements': 'developper-documentation/requirements.md'
-        - 'Architecture': 'developper-documentation/architecture.md'
-        - 'Configuration': 'developper-documentation/configuration.md'
-        - 'Project Architecture': 'developper-documentation/project_architecture.md'
+    - 'Developer documentation':
+        - 'Requirements': 'developer-documentation/requirements.md'
+        - 'Architecture': 'developer-documentation/architecture.md'
+        - 'Configuration': 'developer-documentation/configuration.md'
+        - 'Project Architecture': 'developer-documentation/project_architecture.md'
         - **'New page': 'new_page.md'**
     - 'Cookbooks':
-        - 'Create new commands': 'developper-documentation/cookbooks/create_new_commands.md'
-        - 'Customize error pages': 'developper-documentation/cookbooks/customize_error_pages.md'
-        - 'Use Swift Mailer in BackBee': 'developper-documentation/cookbooks/use_swift_mailer_in_backbee.md'
-        - 'Create bundle administration': 'developper-documentation/cookbooks/create_bundle_administration.md'
-        - 'Layout creation using LayoutBuilderBundle': 'developper-documentation/cookbooks/layout_creation.md'
+        - 'Create new commands': 'developer-documentation/cookbooks/create_new_commands.md'
+        - 'Customize error pages': 'developer-documentation/cookbooks/customize_error_pages.md'
+        - 'Use Swift Mailer in BackBee': 'developer-documentation/cookbooks/use_swift_mailer_in_backbee.md'
+        - 'Create bundle administration': 'developer-documentation/cookbooks/create_bundle_administration.md'
+        - 'Layout creation using LayoutBuilderBundle': 'developer-documentation/cookbooks/layout_creation.md'
     - 'Components':
-        - 'ClassContent': 'developper-documentation/components/classcontent.md'
-        - 'Config': 'developper-documentation/components/config.md'
-        - 'Event Listener': 'developper-documentation/components/event_listener.md'
-        - 'Routing': 'developper-documentation/components/routing.md'
-        - 'Security': 'developper-documentation/components/security.md'
-        - 'Translation': 'developper-documentation/components/translation.md'
-        - 'Nested Node': 'developper-documentation/components/nested_node.md'
+        - 'ClassContent': 'developer-documentation/components/classcontent.md'
+        - 'Config': 'developer-documentation/components/config.md'
+        - 'Event Listener': 'developer-documentation/components/event_listener.md'
+        - 'Routing': 'developer-documentation/components/routing.md'
+        - 'Security': 'developer-documentation/components/security.md'
+        - 'Translation': 'developer-documentation/components/translation.md'
+        - 'Nested Node': 'developer-documentation/components/nested_node.md'
 ```
 
 **Mkdocs** can manage only 1 level of subpage, this configuration:
