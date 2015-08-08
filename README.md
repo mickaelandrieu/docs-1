@@ -56,3 +56,11 @@ pages:
 ```
 
 will result to an error, and the website won't be generated.
+
+## Deploy the documentation (maintainers only)
+
+Use this command *after each pull request merged*:
+
+```bash
+$ mkdocs gh-deploy
+```
