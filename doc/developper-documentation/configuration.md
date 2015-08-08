@@ -1,4 +1,4 @@
-# Developper documentation
+# Developer documentation
 
 ## Configuration
 
@@ -9,7 +9,7 @@ In this section, all the available configurations are broken down by the key (e.
 
 This configuration file has only two functions:
 
-* ``debug``: set the developper mode: if **true**, the container is generated at each request.
+* ``debug``: set the developer mode: if **true**, the container is generated at each request.
 * ``container``: set the container configuration which have 2 parameters
     * ``dump_directory``: set the location of the generated container.
     * ``autogenerate``: if true, the container is generated at each request.
@@ -96,4 +96,3 @@ sudoers:
     username: userId
 
 ```
-

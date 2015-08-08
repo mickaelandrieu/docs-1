@@ -11,7 +11,7 @@ theme: 'bootstrap'
 
 pages:
     - 'Introduction': 'index.md'
-    - 'Developper documentation':
+    - 'Developer documentation':
         - 'Requirements': 'developper-documentation/requirements.md'
         - 'Installation': 'developper-documentation/installation.md'
         - 'Architecture': 'developper-documentation/architecture.md'

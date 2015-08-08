@@ -1,8 +1,8 @@
-# Developper documentation
+# Developer documentation
 
 ## Installation
 
-Make sure you have basic knowledge of PHP5, Apache or Nginx and MySQL to install BackBee in developper mode.
+Make sure you have basic knowledge of PHP5, Apache or Nginx and MySQL to install BackBee in developer mode.
 
 ### Third party Software
 
