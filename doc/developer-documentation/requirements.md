@@ -1,4 +1,4 @@
-# Developper documentation
+# Developer documentation
 
 ## Requirements for running BackBee CMS
 
@@ -8,14 +8,14 @@ Here you will find the list of required and optional requirements.
 
 ### Required
 
-Because BackBee CMS is built on top of Symfony components, theses elements are required.
+Because BackBee CMS is built on top of Symfony components, these elements are required.
 
 * ``JSON`` needs to be enabled
 * ``ctype`` needs to be enabled
 * ``mbstring`` needs to be enabled
-* Your php configuration needs to have the date.timezone setting completed
+* Your PHP configuration needs to have the date.timezone setting defined
 
-The mibimum version of PHP must be: **PHP 5.4.0**.
+The minimum version of PHP must be: **PHP 5.4.0**.
 
 ### Optional
 
@@ -26,7 +26,7 @@ The mibimum version of PHP must be: **PHP 5.4.0**.
 * You (may) need to have POSIX enabled (only on *nix)
 * You (may) need to have Intl installed with ICU 4+
 * You (may) need to have APC 3.0.17+ installed (or another opcode cache needs to be installed)
-* php configuration recommended settings:
+* PHP configuration recommended settings:
 
 ```
 short_open_tag = Off
