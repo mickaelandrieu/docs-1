@@ -1,5 +1,7 @@
 # Introduction
 
+![Docs introduction](img/tutorial_introduction.jpg "Docs introduction")
+
 ## What is BackBee ?
 
 BackBee is an open source Content Management System (CMS) with one major advantage. BackBee uses On-page Editing Technology (OET) which means you can easily create and manage websites as they appear with no prior technical knowledge.

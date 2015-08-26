@@ -5,9 +5,7 @@ site_description: The BackBee documentation
 repo_url: https://github.com/backbee/docs
 
 docs_dir: doc
-extra_javascript: ['js/backbee.js']
-
-theme: 'bootstrap'
+theme_dir: 'blogbee'
 
 pages:
     - 'Introduction': 'index.md'
