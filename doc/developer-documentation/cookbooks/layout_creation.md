@@ -1,4 +1,4 @@
-# Cookbook
+# CookBooks
 
 ## Layout creation using LayoutBuilderBundle
 
