@@ -39,7 +39,7 @@ Then on the ``public`` directory, launch the builtin server of PHP:
 
     $ cd /path/to/your/folder/public && php -S blogbee.dev:8000
 
-And you should see the first installation step of BackBee (access [http://localhost:8000/install.php](http://localhost:8000/install.php)) in a web browser:
+And you should see the first installation step of BackBee (access [http://blogbee.dev:8000/install.php](http://blogbee.dev:8000/install.php)) in a web browser:
 
 ![BackBee Installer - first step](http://i.imgur.com/saok4nc.png "BackBee Installer - first step")
 
