@@ -151,10 +151,10 @@ will look for Listener in the repository/Config/Listener folder.
                 $renderer = $event->getEventArgs();
 
                 /* The eventDispatcher */
-                $eventDistacher = $event->getDispatcher();
+                $eventDispatcher = $event->getDispatcher();
 
                 /* the BackBee application */
-                $application = $eventDistacher->getApplication();
+                $application = $eventDispatcher->getApplication();
 
                 /* The article classcontent */
                 $content = $renderer->getObject();
