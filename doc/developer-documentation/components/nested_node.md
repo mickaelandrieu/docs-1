@@ -14,29 +14,29 @@ NestedNode component regroups every BackBee object using the Nested set model. I
 
 ### KeyWord
 
-KeyWord entity is hierarchical tree of keywords.
+KeyWord entity is a hierarchical tree of keywords.
 
-KeyWord in the CMS are used as keyword, tag and in rare case category. These words can be attach to a `ClassContent` by using the native content Keyword.
+KeyWord in CMS are used as keyword, tag and in rare case category. These words can be attach to a `ClassContent` by using the native content Keyword.
 
 
 ### Media and MediaFolder
 
-MediaFolder entity is hierarchical tree of folders that contain Media.
+MediaFolder entity is a hierarchical tree of folders that contain Media.
 
-These two objects are used in the Media library and like the KeyWord Object, Media is attached to a ClassContent and more precisely all medias with this namespace `BackBee\ClassContent\Media`
+These two objects are used in the Media library and like the KeyWord Object, Media is attached to a ClassContent and more precisely all media with this namespace `BackBee\ClassContent\Media`
 
 
 ### Page and Section
 
-Page and Section work like respectively Media and MediaFolder. Only Sections are hierarchical entities.
+Page and Section works like Media and MediaFolder. Only Sections are hierarchical entities.
 
-To lighten the page Nested set model, the BackBee team has decided to make a distinction between pages with children (section) and pages without children (page).
+To lighten the page Nested set model, the BackBee team has decided to make a distinction between pages with children (sections) and pages without children (pages).
 
 When you create new pages it has a reference to a section. It will automatically become a section when you attach a child to it.
 
 #### Create a page by the code
 
-To ease page creation, we recommand you to use PageBuilder. See an example below:
+To ease page creation, we recommend you to use PageBuilder. See an example below:
 
 ```php
 <?php

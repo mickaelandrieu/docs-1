@@ -13,20 +13,20 @@ It provides a ``Renderer`` object able to:
 
 ## The Big picture
 
-Let's start with a schema that represents the BackBee architecture on a simple page:
+Let's start with a schema that represents BackBee architecture on a simple page:
 
 ![the BackBee big picture](http://i.imgur.com/sLLJ19x.png "the BackBee big picture")
 
-Each element have has an objective representation inside **BackBee core library**:
+Each element has an objective representation inside **BackBee core library**:
 
  - **Site** (``BackBuilder\Site\Site``) is your application.
- - **Page** (``BackBuilder\NestedNode\Page``) represent each page of your application, for example BackBee CMS provide three pages: home page, article page and category page.
- - **Layout** (``BackBuilder\Site\Layout``) represent the layout of a page.
+ - **Page** (``BackBuilder\NestedNode\Page``) represents each page of your application, for example BackBee CMS provide three pages: home page, article page and category page.
+ - **Layout** (``BackBuilder\Site\Layout``) represents the layout of a page.
  - **ContentSet** (``BackBuilder\ClassContent\ContentSet``) represent the blocks/columns of layouts, which can be edited by user.
 
 When an user accesses to a page, the ``Renderer::render()`` method is called.
 
-> During the rendereing process, three events are dispatched: ``prerender``, ``render`` and ``postrender``.
+> During the rendering process, three events are dispatched: ``prerender``, ``render`` and ``postrender``.
 
 ## Renderer adapters and manageable extensions
 
@@ -36,7 +36,7 @@ In BackBee Standard Edition, two adapters are provided:
 * The ``Twig`` Adapter
 
 When BackBee tries to render content, it looks for a template and then it looks for the file extension.
-If the extension file is part of the manageable extensions and if an Adapter is found for this extension, the Adapter is called to render the template with the assigned variables.
+If the extension file is part of manageable extensions and if an Adapter is found for this extension, the Adapter is called to render the template with the assigned variables.
 
 To implement your own adapter, for [Smarty](http://www.smarty.net/) you need to implement the ``BackBee\Renderer\RendererAdapterInterface`` interface.
 
@@ -142,7 +142,7 @@ interface RendererAdapterInterface
 
 ```
 
-An adapter can also extend ``BackBee\Renderer\AbstractRendererAdapter`` to help you focus only on templating engine specificities you want to support.
+An adapter can also extend ``BackBee\Renderer\AbstractRendererAdapter`` to help you focus only on templating engine specifications you want to support.
 
 
 ## Render a Page / ClassContent
@@ -166,7 +166,7 @@ If the object is an instance of ``BackBee\Site\Page``, the function ``renderPage
 
 * This method loads the Page Layout object and then loops into all the ContentSet objects, and for each ContentSet loop into all the ClassContents and try to render them.
 
-* Finaly, it uses the template related to the layout through the method ``renderTemplate`` which calls the selected ``Adapter::renderTemplate()`` function.
+* Finally, it uses the template related to the layout through the method ``renderTemplate`` which calls the selected ``Adapter::renderTemplate()`` function.
 
 Else, if the object is not a Page instance, the function ``renderContent()`` is directly called.
 
@@ -186,7 +186,7 @@ public function partial($template = null, $params = null)
 }
 ```
 
-To call a partial in your template, the file need to be in ``repository/Templates/scripts/partials`` folder:
+To call a partial in your template, the file needs to be in ``repository/Templates/scripts/partials`` folder:
 
 ```twig
 <!DOCTYPE html>
@@ -204,7 +204,7 @@ To call a partial in your template, the file need to be in ``repository/Template
 
 ## Asset management
 
-In addition, the BackBee Renderer Component provides nice helpers to help you add assets dynamicaly.
+In addition, the BackBee Renderer Component provides nice helpers to help you add assets dynamically.
 
 BackBee helps you add any resource available in your application, here is a list of available helpers:
 
@@ -239,7 +239,7 @@ The BackBee Renderer Component embeds some useful variables in each template fro
     }
 ```
 
-This way, in template you can do:
+Thanks to helpers, in template you can retrieve useful informations:
 
 ```html
 <!DOCTYPE html>
@@ -256,13 +256,13 @@ This way, in template you can do:
 </html>
 ```
 
-In BackBee Standard application you also have access to specific helpers:
+In BackBee Standard application, theses additional helpers are available:
 
 * ``bbtoolbar()`` : display the toolbar application. *You need to have an element with the CSS identifier **bb5-site-wrapper** or else the application has bad design behaviors*.
-* ``navbar()`` : display a menu for all pages which has the "display in the menus" option activated.
+* ``navbar()`` : display a menu for all pages that have the "display in the menus" option activated.
 * ``container()`` allows you to loop into the contentset of your layout and then, design your page.
 
-As a complete example, you can take a look at the *Article* layout:
+For a complete example, you can take a look at the *Article* layout:
 
 ```twig
 <!DOCTYPE html>
