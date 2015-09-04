@@ -2,9 +2,9 @@
 
 ## The ClassContent Component
 
-### What is it a ClassContent?
+### What is a ClassContent?
 
-ClassContents are at the heart of BackBee, every piece of content you will find in BackBee is a ClassContent. It defines your site and how you contribute to.
+ClassContents are at the heart of BackBee, every piece of content you will find in BackBee is a ClassContent. It defines your site and how you contribute to it.
 ClassContents can be extended, listened, versioned and they all have in common that they implement `BackBee\Renderer\RenderableInterface`.
 In general a ClassContent is defined in YAML, it can be implemented in PHP too but the YAML notation because it's easier, quicker and scalable compared to PHP.
 
@@ -18,24 +18,24 @@ PHPCR definition:
 
 > The typical use case is content management systems. PHPCR combines the best out of document-oriented databases (weak structured data) and of XML databases (hierarchical trees). On top of that, it adds useful features like searching, versioning, access control and locking on top of it.
 
-A ClassContent is compose of it's definition class and it's templates. The storage of a ClassContent is automated and it's done int the content table, BackBee uses the Doctrine discriminator system to store contributed entities.
+ClassContent is composed of it's definition class and it's templates. The storage of ClassContent is automated and is done int the content table, BackBee uses the Doctrine discriminator system to store contributed entities.
 
-A ClassContent definition is generally declared in an YAML file and is composed of three major parts `properties`, `elements` and `parameters`
+A ClassContent definition is generally declared in a YAML file and is composed of three major parts `properties`, `elements` and `parameters`
 
 ### Naming Convention
 
-A ClassContent is declared in a `ClassContent` folder and it final namespace depends of the folder where you declare an new entity. All ClassContent have common root namespaces and is `BackBee\ClassContent`. If you create a definition file into a folder named `Article` and this file is named `Paragraph.yml` the complete namespace to this content is`BackBee\ClassContent\Article\Paragraph`.
+ClassContent is declared in a `ClassContent` folder and its final namespace depends on the folder where you declare a new entity. All ClassContent have common root namespaces which is `BackBee\ClassContent`. If you create a definition file in a folder named `Article` and this file is named `Paragraph.yml` the complete namespace for this content is`BackBee\ClassContent\Article\Paragraph`.
 
 Respect the PSR naming convention. PSR specification is:
 > Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0](http://www.php-fig.org/psr/psr-0/), [PSR-4](http://www.php-fig.org/psr/psr-4/)].
 > This means each class is in a file by itself, and is in a namespace of at least one level: a top-level vendor name.
 > Class names MUST be declared in StudlyCaps.
 
-Even if ClassContent are in most of the cases YML files, they are designed to become PHP Class, then you must declare names in StudlyCaps.
+Even if ClassContent are in most cases YML files, they are designed to become PHP Class, then you must declare names in StudlyCaps.
 
 ### Primary ClassContent types
 
-The primary ClassContents types are the most basic type you can find in BackBee. They are the base of every other Content.
+The primary ClassContents types are the most basic types in BackBee. They are the base of every other Content.
 
 BackBee provides 5 primary ClassContent types:
 
@@ -47,7 +47,7 @@ BackBee provides 5 primary ClassContent types:
 
 ### Native ClassContent types
 
-In addition of the primary types BackBee provides four Natives ClassContents and this contents are an  extensions of primary contents:
+In addition to the primary types BackBee provides four Natives ClassContents and theses contents are extensions of primary contents:
 
 - Element\Attachment , an attachment content, extending Element\File
 - Element\Date, a date input, extending Element\Text
@@ -93,7 +93,7 @@ Article:
 ```yml
 name: Article
 ```
-The property `name` is for humans can be compose of multiple words like "Basic Article"
+The property `name` is for humans and can be composed of multiple words like "Basic Article"
 
 
 ```yml
@@ -104,7 +104,7 @@ The property `description` goes against human reading and provides a description
 ```yml
 category: [article]
 ```
-The property `category` helps you to categorize your ClassContent and if a content isn't categorized it can't be edited online, youmusn't don't forget to assign a category to each of your content. In addition a ClassContent can be categorized and visually hidden in the toolbar if you use this notation:
+The property `category` helps you to categorize your ClassContent and if content isn't categorized it can't be edited online, you musn't forget to assign a category to each content. In addition a ClassContent can be categorized and visually hidden in the toolbar if you use this notation:
 
 ```yml
 category: [!article]
@@ -124,7 +124,7 @@ title:
 ```yml
 title:
 ```
-This will be the identifier to your property and the way you access code like this  `{{ this.render(title)|raw }}` in template file
+This will be the identifier property and the way you access code like this  `{{ this.render(title)|raw }}` in template file
 
 ```yml
 type: BackBee\ClassContent\Element\Text
@@ -140,12 +140,12 @@ The property label is for humans and can be composed of multiple words like "Bas
 default:
   value: "Your title here..."
 ```
-The default section allows you to define how appear just initialized ClassContent. Here the default value of the title is "Your title here..."
+The default section allows you to define how just initialized ClassContent appears. Here the default value of the title is "Your title here..."
 
 ```yml
 maxentry: 1
 ```
-Max entry determine how many can have as `title` in the article content.
+This property determine how many entries of this property the Class Content can accept.
 
 ### ClassContent templates
 
@@ -168,9 +168,9 @@ If BackBee can't find the template it will retrieve the template of each element
 
 #### template and render mode
 
-The render mode has the same function as a template but it can be considered as an alternative template. In general render mode is automatically called by a block extending `ContentSet`, by default when you render it use the name of this block to require an alternative rendering. But you can also define the rendering using `parameters` or in the template directly when you use the function render `this.render(Article, 'renderMode')`.
+The render mode has the same function as the template but it can be considered as an alternative template. In general, render mode is automatically called by a block extending `ContentSet`, by default when you render it use the name of this block to require an alternative rendering. But you can also define the rendering using `parameters` or in the template directly when you use the function render `this.render(Article, 'renderMode')`.
 
-In the next example we will put our article into an ArticleList and then we alternate the rendering of the article creating a file named `Article.ArticleList.twig` and this template will automatically used by BackBee.
+In the next example we will put our article into an ArticleList and then we alternate the rendering of the article creating a file named `Article.ArticleList.twig` and this template will be automatically used by BackBee.
 
 > Article.ArticleList.twig
 ```twig
@@ -184,12 +184,12 @@ In the next example we will put our article into an ArticleList and then we alte
 </article>
 ```
 
-BackBee can't find the render mode `Article.ArticleList.twig` it will try to render `Article.twig` and it if doesn't find this template it will render each element with it's default rendering mode.
+BackBee can't find the render mode `Article.ArticleList.twig` it will try to render `Article.twig` and it if doesn't find this template it will render each element with its default rendering mode.
 
 
 ### ContentSet
 
-ContentSets are particular ClassContents instead of a classic ClassContent, a ContentSet doesn't have elements section and represents only an collection of other ClassContent. But you can customize a ClassContents trough his `parameters` section.
+ContentSets are particular ClassContents instead of a classic ClassContent, a ContentSet doesn't have elements section and represents only a collection of other ClassContent. But you can customize a ClassContents trough its `parameters` section.
 
 ```yml
 RelatedContainer:
@@ -203,7 +203,7 @@ RelatedContainer:
     accept: [BackBee\ClassContent\Article\Article]
 ```
 
-> has you can see a ContentSet has extended `\BackBee\ClassContent\ContentSet`
+> As you can see a ContentSet has extended `\BackBee\ClassContent\ContentSet`
 
 
 #### Focus on parameters section:
@@ -211,7 +211,7 @@ RelatedContainer:
 ```yml
 rendermode: related
 ```
-Render mode allow you to override the default behavior of BackBee by redefining the render mode named on sub content. We see before that by default BackBee tries to find a render mode by using the name of the ContentSet then by default `Renderer` search an file named `Article.RelatedContainer.twig`. By using the `rendermode` setting you will find `Article.related.twig` file.
+Render mode allows you to override the default behavior of BackBee by redefining the render mode named on sub content. We have seen that by default BackBee tries to find a render mode by using the name of the ContentSet then by default `Renderer` search a file named `Article.RelatedContainer.twig`. By using the `rendermode` setting you will find `Article.related.twig` file.
 
 ```yml
 accept: [BackBee\ClassContent\Article\Article]
@@ -220,7 +220,7 @@ The accept parameter prefilters the type of ClassContent you can add into your C
 
 #### ContentSet templates
 
-ContentSet template exactly at same way as other ClassContent. The only difference is on you have to use a loop to render the collection.
+ContentSet template is rendered exactly at same way as other ClassContent. The only difference is that you have to use a loop to render the collection.
 
 > RelatedContainer.twig
 >
@@ -232,16 +232,16 @@ ContentSet template exactly at same way as other ClassContent. The only differen
 </div>
 ```
 
-To access to the ContentSet collection you have to use this way `this.getObject().getData()`
+To access the ContentSet collection you have to use this way `this.getObject().getData()`
 
 ### The "Autoblock"
 
 An Autoblock isn't a primitive or native ClassContent and is a mix between these two types.
-An Autoblock is an fully automated Content, His collection isn't contributable and automatically creates list of ClassContent. This list is generated by the configuration of the Autoblock.
+An Autoblock is a fully automated Content, its collection isn't contributable and automatically creates a list of ClassContent. This list is generated by the configuration of the Autoblock.
 
-By default BackBee doesn't provide "Autoblock" but there is one provided into the standard edition.
+By default BackBee doesn't provide "Autoblock" but there is one provided in the standard edition.
 
-An Autoblock has to be highly configurable and all of the configuration are created into the `parameters` section. An Autoblock has to implement a listener to automatically generate it collection. You can find more information into the Parameters section.
+An Autoblock has to be highly configurable and all the configuration is created in the `parameters` section. An Autoblock has to implement a listener to automatically generate its collection. You can find more information in the Parameters section.
 
 ### Override, Extends, listen and add Trait to your ClassContent
 
@@ -255,19 +255,21 @@ The priority system tries to find the definition and template in this order :
 - `{bundle}/ClassContent` into your bundles ClassContent folder
 - `ClassContent` into ClassContent BackBee component
 
-If you create a file with the same name as a existing content but in a different folder has priority, this content will modified and take the value in the created file. This work also for the template, but have to be replaced `ClassContent` folder with `Templates/scripts`
+If you create a file with the same name as an existing content but a different folder has the priority, this content will be modified and take the value in the created file. This work also for the template, but have to be replaced `ClassContent` folder with `Templates/scripts`
 
 #### Extends a ClassContent
 
 To extend an other ClassContent, you just have to use `extends` keyword like in the example of the ContentSet.
 
-There is lots of advantages to extending an other class content. First you do not have to rewrite properties and elements. The second advantage concerns rendering and listeners, BackBee will run through the parent classes to find templates and listener.
+There are many advantages to extending an other class content. First you do not have to rewrite properties and elements.
+
+The second advantage concerns rendering and listeners, BackBee will run through the parent classes to find templates and listener.
 
 #### Listen a ClassContent
 
-Add an event listener on a class content is pretty easy and you will find more information in the [Event Listener component](/developper-documentation/components/event_listener/).
+Add an event listener to a class content is pretty easy and you will find more information in the [Event Listener component](/developper-documentation/components/event_listener/) section.
 
-To summarize each ClassContent have 5 events attach:
+To summarize each ClassContent has 5 attached events:
 - prerender
 - onrender
 - postrender
@@ -276,7 +278,7 @@ To summarize each ClassContent have 5 events attach:
 
 #### Add a Trait  to a ClassContent
 
-Trait lets go add behaviors to a ClassContent. By default BackBee doesn't provide trait, but like Autoblocks, some traits are available in the standard edition. Trait have exactly the same usage than the php Trait.
+Trait lets go add behaviors to a ClassContent. By default BackBee doesn't provide trait, but like Autoblocks, some traits are available in the standard edition. If you don't know what is a trait, check the official [PHP documentation](http://php.net/manual/en/language.oop5.traits.php).
 
 
 ### ClassContent Parameters
@@ -311,7 +313,7 @@ BlockDemo:
 
 #### Use parameters
 
-If ClassContent Parameters are not validated by user the content parameters are overriden by revision parameters.
+If ClassContent Parameters are not validated by user the content parameters are overridden by revision parameters.
 **Only the value of the parameter is saved.**
 
 To get default parameters:
@@ -389,7 +391,7 @@ $paramValue = $content->getParamValue('mytext');
 // That returns the new value string '' (length=0)
 ```
 
-To set a value, you need to set up the same type you declare in the YAML file as value:
+To set a value, you need to set up the same type you declare in the YAML file as the value:
 ```php
 <?php
 $content->setParam('mytext', 'foo');
