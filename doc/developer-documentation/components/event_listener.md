@@ -3,7 +3,7 @@
 ## The Event Listener Component
 
 *Events* are a common and effective way to tie together loosely coupled components in an application.
-An event is generally used to broadcast a change that has occured during a process. If a `component` is
+An event is generally used to broadcast a change that has occurred during a process. If a `component` is
 interested in a particular event, it can *listen* to it. When this particular event is triggered, a `method`,
 often called *callback* or *handler* is executed. Events are convenient ways to share
 data between components.
@@ -29,7 +29,7 @@ $myHelloEvent = new Event($target, array("message"=>"Hello BackBee");
 `Namespace: BackBee\Event\EventListener`
 
 To listen to an event you must use the `addListener` method of the `EventDispatcher`.
-`addListener` takes three parameters. The first one is the name of the event that will be triggered, the second is an array whose first element
+`addListener` takes three parameters. The first one is the name of the event that will be triggered, the second is an array which first element
 is a class path and the second is a method. The last parameter is the priority of the event. Listener with higher priority will be triggered first.
 
     $this->application->getEventDispatcher()->addListener("loading.event", array("BackBee/Event/Listener/HelloListener", "sayHello"));
@@ -66,8 +66,7 @@ Notice that the event object has access to the `application` *via* the `EventDis
 
 `Namespace: BackBee\Event\EventListener`
 
-Events are *dispatched* or *triggered* by the `EventDispatcher` by using the method `triggerEvent`
-The sample bellow shows how to listen to an event.
+Events are *dispatched* or *triggered* by the `EventDispatcher` by using the method `triggerEvent`. The sample bellow shows how to listen to an event.
 
 To trigger an event, we must use the `EventDispatcher`. It provides, among others, a `dispatch` method that takes two arguments. A name and an event object.
 
@@ -81,19 +80,18 @@ the static `sayHello` method of the `Backbee/Event/Listener/HelloListener` will 
 
 ## Events from Class Content Component
 
-One of the main purpose of `Backbee` is to render contents. As we have seen, a
-content is defined in a `.yml` file. Content creation and content rendering go
-through many phases that `Backbee` exposes with events. By instance, an event is triggered
-when a content is created, before and after a content has been saved, when the rendering process
-is started, while the content is been rendered, after the renderer process and so on. These events
-allow us the act in different ways on the contents lifecycle and rendering process itself.
+One of the main purposes of `Backbee` is to render contents. As we have seen, 
+content is defined in a `.yml` file. Content creation and content rendering goes
+through many phases that `Backbee` exposes with events. For instance, an event is triggered
+when a content is created, before and after a content has been saved, when the rendering process starts, while the content is been rendered, after the renderer process and so on. These events
+allow us to act in different ways on the contents lifecycle and rendering process itself.
 
 ClassContent events are similar to custom events. But, as they take place when the main application
 is dealing with a request, a common way to listen to them is to use an `event.yml` config file.
-Will try to local event file in the `repository/Config` folder. Bellow is an example of how to
-use the file.
+Bellow is an example of how to use the file.
 
 ```yaml
+# /repository/Config/event.yml
     article.article.render:
         listeners:
             - [BackBee\Event\Listener\ArticleListener, onRender]
@@ -109,10 +107,10 @@ In our example,  `article.article.render` and `social.facebook.prerender` are ev
 By convention `BackBee` transforms ClassContent class path to event name. Let's take a look at our events files.
 
 According to our `event.yml`, the `article.article.render` event will be triggered when
-the content `ClassContent/Article/Article.yml` is about the be rendered whereas
+the content `ClassContent/Article/Article.yml` is about to be rendered whereas
 the 'social.facebook.prerender' will be triggered *before* the content `ClassContent/Social/Facebook.yml`
-was rendered.
-`*.render`  and `*.prerender` are events triggered by the `Renderer` object. Bellow is the list of
+is rendered.
+`*.render`  and `*.prerender` are events dispatched during the rendering of pahe. Bellow is the list of
 all the Renderer events.
 
 - `*.prerender` : is triggered *before* the content is being rendered;
@@ -121,7 +119,7 @@ all the Renderer events.
 
 However there is no strong difference between *render* and *postrender*.
 
-In BackBee all the contents are `Doctrine` entities. These doctrine events are also available for all the contents.
+In BackBee all contents behave like `Doctrine` entities. These doctrine events are also available for all the contents.
 
 - `preremove`
 - `postremove`
